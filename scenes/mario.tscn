@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwn5o8bf43uqr"]
+[gd_scene load_steps=22 format=3 uid="uid://bwn5o8bf43uqr"]
 
 [ext_resource type="Script" uid="uid://cv4rym5ix4sxf" path="res://scripts/mario.gd" id="1_bvgp0"]
 [ext_resource type="Texture2D" uid="uid://belgnktgel8wy" path="res://assets/textures/mario-ssheet-1.png" id="1_keuod"]
 [ext_resource type="AudioStream" uid="uid://ru13qcq25886" path="res://assets/audio/jumpbros.ogg" id="3_5gbmu"]
+[ext_resource type="Texture2D" uid="uid://e3v7lmf1ii0a" path="res://assets/textures/particula-humo.png" id="3_l5geh"]
 [ext_resource type="AudioStream" uid="uid://n77770apufpa" path="res://assets/audio/p-ping.mp3" id="4_wnd63"]
 [ext_resource type="AudioStream" uid="uid://d2d7cufijchkg" path="res://assets/audio/mario-lose-life.mp3" id="5_rgcl4"]
 [ext_resource type="AudioStream" uid="uid://dytp06wwcu0de" path="res://assets/audio/squit.mp3" id="6_cjj4f"]
@@ -86,6 +87,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0nfy"]
 size = Vector2(12, 16)
 
+[sub_resource type="Curve" id="Curve_bdh24"]
+_data = [Vector2(0, 0.977528), 0.0, 0.0, 0, 0, Vector2(0.982955, 0.101124), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Mario" type="CharacterBody2D"]
 z_index = 15
 collision_layer = 4
@@ -107,6 +112,23 @@ limit_right = 3380
 limit_bottom = 0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(0.7, 0.7)
+emitting = false
+amount = 20
+texture = ExtResource("3_l5geh")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.36
+lifetime_randomness = 1.0
+fixed_fps = 30
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.07
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_bdh24")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

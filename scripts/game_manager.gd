@@ -27,8 +27,8 @@ extends Node2D
 # FUNCION INICIALIZADORA:
 func _ready():
 	# CONEXION A SEÑALES GAMEOVER y BUTTON-NEXT-LEVEL:
-	#FuncionesAuxiliares.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
-	#FuncionesAuxiliares.connect("next_level_instance", Callable(self, "_on_next_level_instance"))
+	#FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
+	FuncionesGenerales.connect("next_level_instance", Callable(self, "_on_next_level_instance"))
 	
 	# REFERENCIA ESTE NODO PRINCIPAL (MAIN):
 	GlobalValues.game_manager_node = self
