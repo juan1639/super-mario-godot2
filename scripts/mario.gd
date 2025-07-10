@@ -152,11 +152,11 @@ func _on_goomba_body_entered(body, goomba):
 	if timerColision.time_left > 0:
 		return
 	
-	if body == self and GlobalValues.estado_juego["en_juego"] and not goomba.get_child(0).aplastado:
-		if invulnerability and not goomba.get_child(0).is_dying_not_aplastado:
-			goomba.get_child(0).is_dying_not_aplastado = true
-			goomba.get_child(0).timerGoombaAplastado.start(0.4)
-			goomba.get_child(0).velocity.y = -200
+	if body == self and GlobalValues.estado_juego["en_juego"] and not goomba.aplastado:
+		if invulnerability and not goomba.is_dying_not_aplastado:
+			goomba.is_dying_not_aplastado = true
+			goomba.timerGoombaAplastado.start(0.4)
+			goomba.velocity.y = -200
 			return
 		elif not invulnerability:
 			velocity = Vector2(0, POTENCIA_SALTO * 2)
@@ -167,11 +167,11 @@ func _on_aplastar_goomba_body_entered(body, goomba):
 	if invulnerability:
 		return
 	
-	if body == self and GlobalValues.estado_juego["en_juego"] and not goomba.get_child(0).aplastado:
+	if body == self and GlobalValues.estado_juego["en_juego"] and not goomba.aplastado:
 		timerColision.start(0.1)
-		goomba.get_child(0).aplastado = true
-		goomba.get_child(0).velocity.x = 0
-		goomba.get_child(0).timerGoombaAplastado.start(0.8)
+		goomba.aplastado = true
+		goomba.velocity.x = 0
+		goomba.timerGoombaAplastado.start(0.8)
 		velocity = Vector2(velocity.x, POTENCIA_SALTO * 2.8)
 		FuncionesTilesMario.agregar_puntos(100, global_position)
 		sonido_aplastar.play()

@@ -1,7 +1,7 @@
 extends Node2D
 
 # REFERENCIAS A SPRITES (GOOMBA, etc.):
-#@onready var goomba_scene = preload("res://scenes/goomba.tscn")
+@onready var goomba_scene = preload("res://scenes/goomba.tscn")
 @onready var goomba_spawns = $GoombaSpawns
 
 @onready var bloque_scene = preload("res://scenes/bloque_sprite.tscn")
@@ -63,14 +63,12 @@ func _ready():
 	
 	# INSTANCIAR GOOMBAS:
 	for spawn_point in goomba_spawns.get_children():
-		pass
-		
-		#print("Instanciando Goomba en ", spawn_point.global_position)
-		#var goomba = goomba_scene.instantiate()
-		#goomba.global_position = spawn_point.global_position
-		#goomba.get_child(0).get_child(3).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
-		#goomba.get_child(0).get_child(4).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
-		#add_child(goomba)
+		print("Instanciando Goomba en ", spawn_point.global_position)
+		var goomba = goomba_scene.instantiate()
+		goomba.global_position = spawn_point.global_position
+		goomba.get_child(2).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
+		goomba.get_child(3).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
+		add_child(goomba)
 	
 	# CONECTAR SEÑAL de fallZone:
 	for fallZone in fallZones.get_children():

@@ -48,6 +48,7 @@ theme/custom_font="uid://0aates0v5a4s"
 2d_physics/layer_8="Estrella"
 2d_physics/layer_9="Seta"
 2d_physics/layer_10="BloqueSprite"
+2d_physics/layer_11="GoombaArea2D"
 
 [rendering]
 

@@ -1,0 +1,143 @@
+[gd_scene load_steps=15 format=3 uid="uid://brujiq5va0qko"]
+
+[ext_resource type="Texture2D" uid="uid://7kg3t6uy65cj" path="res://assets/textures/goomba-ssheet-alpha.png" id="1_21hcc"]
+[ext_resource type="Script" uid="uid://r5i2qwr5747" path="res://scripts/goomba.gd" id="1_s1jgw"]
+[ext_resource type="Texture2D" uid="uid://bt4c5o32aq766" path="res://assets/textures/goomba-paracaidas.png" id="3_fgpj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0j8n"]
+atlas = ExtResource("1_21hcc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lml2"]
+atlas = ExtResource("1_21hcc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1jgw"]
+atlas = ExtResource("1_21hcc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgpj4"]
+atlas = ExtResource("1_21hcc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0j8n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0j8n")
+}],
+"loop": true,
+"name": &"Aplastado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lml2")
+}],
+"loop": true,
+"name": &"IsDyingNotAplastado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1jgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgpj4")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 2.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2qtu"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21hcc"]
+size = Vector2(14, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgpj4"]
+size = Vector2(6, 8)
+
+[sub_resource type="Animation" id="Animation_fgpj4"]
+resource_name = "Paracaidas"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.250623, 0.499076, 0.750784),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.122173, 0.0, -0.122173]
+}
+
+[sub_resource type="Animation" id="Animation_l0j8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lml2"]
+_data = {
+&"Paracaidas": SubResource("Animation_fgpj4"),
+&"RESET": SubResource("Animation_l0j8n")
+}
+
+[node name="Goomba" type="CharacterBody2D"]
+z_index = 15
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_s1jgw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l0j8n")
+animation = &"IsDyingNotAplastado"
+frame_progress = 0.56011
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y2qtu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_21hcc")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_fgpj4")
+
+[node name="TimerGoombaAplastado" type="Timer" parent="."]
+
+[node name="ParacaidasGoomba" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(0, -14)
+texture = ExtResource("3_fgpj4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParacaidasGoomba"]
+libraries = {
+&"": SubResource("AnimationLibrary_5lml2")
+}
