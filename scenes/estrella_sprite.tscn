@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://wbhwtlvidhom"]
+
+[ext_resource type="Texture2D" uid="uid://xehk0q23nrh2" path="res://assets/textures/smb-estrella.png" id="1_8a1xv"]
+[ext_resource type="Script" uid="uid://cv68te8a5xkvg" path="res://scripts/estrella_sprite.gd" id="1_bab7p"]
+[ext_resource type="AudioStream" uid="uid://qfottwqvu1oq" path="res://assets/audio/estrella.mp3" id="3_e78ml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bab7p"]
+atlas = ExtResource("1_8a1xv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e78ml"]
+atlas = ExtResource("1_8a1xv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5bw3"]
+atlas = ExtResource("1_8a1xv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tqpb"]
+atlas = ExtResource("1_8a1xv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0by8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bab7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e78ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5bw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tqpb")
+}],
+"loop": true,
+"name": &"Intermitente",
+"speed": 20.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q153"]
+size = Vector2(14, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e78ml"]
+
+[node name="EstrellaSprite" type="CharacterBody2D"]
+z_index = 24
+script = ExtResource("1_bab7p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w0by8")
+animation = &"Intermitente"
+frame_progress = 0.6863
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5q153")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e78ml")
+
+[node name="SonidoEstrella" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e78ml")

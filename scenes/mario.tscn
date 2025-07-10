@@ -1,0 +1,154 @@
+[gd_scene load_steps=20 format=3 uid="uid://bwn5o8bf43uqr"]
+
+[ext_resource type="Script" uid="uid://cv4rym5ix4sxf" path="res://scripts/mario.gd" id="1_bvgp0"]
+[ext_resource type="Texture2D" uid="uid://belgnktgel8wy" path="res://assets/textures/mario-ssheet-1.png" id="1_keuod"]
+[ext_resource type="AudioStream" uid="uid://ru13qcq25886" path="res://assets/audio/jumpbros.ogg" id="3_5gbmu"]
+[ext_resource type="AudioStream" uid="uid://n77770apufpa" path="res://assets/audio/p-ping.mp3" id="4_wnd63"]
+[ext_resource type="AudioStream" uid="uid://d2d7cufijchkg" path="res://assets/audio/mario-lose-life.mp3" id="5_rgcl4"]
+[ext_resource type="AudioStream" uid="uid://dytp06wwcu0de" path="res://assets/audio/squit.mp3" id="6_cjj4f"]
+[ext_resource type="AudioStream" uid="uid://b77fm1hrqtk2r" path="res://assets/audio/level-up.mp3" id="7_8ska5"]
+[ext_resource type="AudioStream" uid="uid://qfottwqvu1oq" path="res://assets/audio/estrella.mp3" id="8_5l4gq"]
+[ext_resource type="AudioStream" uid="uid://jwityfng1of2" path="res://assets/audio/bonus-level-up.mp3" id="9_t0xp7"]
+[ext_resource type="AudioStream" uid="uid://cacgho7h1erd2" path="res://assets/audio/musica-mario-bros.mp3" id="10_q20sn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjj4f"]
+atlas = ExtResource("1_keuod")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ska5"]
+atlas = ExtResource("1_keuod")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keuod"]
+atlas = ExtResource("1_keuod")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgcl4"]
+atlas = ExtResource("1_keuod")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvgp0"]
+atlas = ExtResource("1_keuod")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gbmu"]
+atlas = ExtResource("1_keuod")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnd63"]
+atlas = ExtResource("1_keuod")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0nfy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjj4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ska5")
+}],
+"loop": true,
+"name": &"FlagPole",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keuod")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgcl4")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvgp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gbmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnd63")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0nfy"]
+size = Vector2(12, 16)
+
+[node name="Mario" type="CharacterBody2D"]
+z_index = 15
+script = ExtResource("1_bvgp0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p0nfy")
+animation = &"FlagPole"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p0nfy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_top = 0
+limit_bottom = 0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerColision" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerTransicionVidaMenos" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerEstrella" type="Timer" parent="."]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelMiddleWorld" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelTimeup" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SonidoSalto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5gbmu")
+
+[node name="SonidoCoin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wnd63")
+
+[node name="SonidoLoseLife" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rgcl4")
+
+[node name="SonidoAplastar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cjj4f")
+
+[node name="MusicaLevelUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8ska5")
+
+[node name="MusicaEstrella" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_5l4gq")
+
+[node name="SonidoBonusLevelUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_t0xp7")
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_q20sn")

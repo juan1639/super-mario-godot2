@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkeqdgtctp4np"]
+
+[ext_resource type="AudioStream" uid="uid://cbyox0rkd2mmq" path="res://assets/audio/seta.mp3" id="1_3msql"]
+[ext_resource type="Script" uid="uid://dqoqnpyrbf73d" path="res://scripts/seta_sprite.gd" id="1_r4cho"]
+[ext_resource type="Texture2D" uid="uid://doi5xi0h2rfkf" path="res://assets/textures/bloques-setas-alpha.png" id="1_uufd4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al4iv"]
+
+[node name="Seta" type="CharacterBody2D"]
+script = ExtResource("1_r4cho")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uufd4")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_al4iv")
+
+[node name="SonidoSeta" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_3msql")

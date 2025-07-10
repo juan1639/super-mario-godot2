@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bttf7hhw2gxqn"]
+
+[ext_resource type="Texture2D" uid="uid://bhaspumxmjc0m" path="res://assets/textures/coins-ssheet-alpha.png" id="1_krtb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq3mp"]
+atlas = ExtResource("1_krtb4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sodo8"]
+atlas = ExtResource("1_krtb4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6c5j"]
+atlas = ExtResource("1_krtb4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rlii"]
+atlas = ExtResource("1_krtb4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db8r8"]
+atlas = ExtResource("1_krtb4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2cle"]
+atlas = ExtResource("1_krtb4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_us8l0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq3mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sodo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6c5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rlii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db8r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2cle")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="MonedaRotando" type="AnimatedSprite2D"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_us8l0")
+autoplay = "default"
+frame = 5
+frame_progress = 0.941669

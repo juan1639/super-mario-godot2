@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8da3gns5cin2"]
+
+[ext_resource type="Texture2D" uid="uid://doi5xi0h2rfkf" path="res://assets/textures/bloques-setas-alpha.png" id="1_acvck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0xql"]
+size = Vector2(16, 16)
+
+[node name="BloqueSprite" type="CharacterBody2D"]
+z_index = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_acvck")
+hframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q0xql")

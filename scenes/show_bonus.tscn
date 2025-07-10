@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp0bc37d7iqvp"]
+
+[ext_resource type="Script" uid="uid://cer6abh01jqni" path="res://scripts/show_bonus.gd" id="1_6ap3l"]
+[ext_resource type="Texture2D" uid="uid://b2wn1omhqnqxp" path="res://assets/textures/show-bonus-mario.png" id="1_iu7kb"]
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 30
+texture = ExtResource("1_iu7kb")
+hframes = 7
+script = ExtResource("1_6ap3l")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

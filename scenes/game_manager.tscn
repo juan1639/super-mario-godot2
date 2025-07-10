@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbc2w6b66ha1l"]
+
+[ext_resource type="Script" uid="uid://bc4ymytyyxrfn" path="res://scripts/game_manager.gd" id="1_hwd4i"]
+[ext_resource type="PackedScene" uid="uid://b8ja1jigm7dwe" path="res://scenes/world_1_1.tscn" id="2_glms7"]
+[ext_resource type="PackedScene" uid="uid://bwn5o8bf43uqr" path="res://scenes/mario.tscn" id="3_oo155"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_hwd4i")
+
+[node name="World1_1" parent="." instance=ExtResource("2_glms7")]
+
+[node name="Mario" parent="." instance=ExtResource("3_oo155")]
+
+[node name="GoombaSpawns" type="Node" parent="."]
+
+[node name="Marker2D0" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(406, 187)
+
+[node name="Marker2D1" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(839, 190)
+
+[node name="Marker2D2" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(869, 189)
+
+[node name="Marker2D3" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(1323, 67)
+
+[node name="Marker2D4" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(1353, 66)
+
+[node name="Marker2D5" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(1608, 191)
+
+[node name="Marker2D6" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(1639, 191)
+
+[node name="Marker2D7" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(1766, 189)
+
+[node name="Marker2D8" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(1796, 188)
+
+[node name="Marker2D9" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(2087, 190)
+
+[node name="Marker2D10" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(2115, 189)
+
+[node name="Marker2D11" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(2745, 191)
+
+[node name="Marker2D12" type="Marker2D" parent="GoombaSpawns"]
+position = Vector2(2774, 190)

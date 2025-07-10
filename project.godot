@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Mario-clon2"
+run/main_scene="uid://n60sulcv2gdw"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalValues="*res://scripts/GlobalValues.gd"
+FuncionesAuxiliaresMario="*res://scripts/FuncionesAuxiliaresMario.gd"
+FuncionesGenerales="*res://scripts/FuncionesGenerales.gd"
+AnimacionesMario="*res://scripts/AnimacionesMario.gd"
+FuncionesTilesMario="*res://scripts/FuncionesTilesMario.gd"
+FuncionesMovSaltoMario="*res://scripts/FuncionesMovSaltoMario.gd"
+
+[display]
+
+window/size/viewport_width=427
+window/size/viewport_height=240
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://0aates0v5a4s"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
