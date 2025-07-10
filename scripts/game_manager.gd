@@ -8,7 +8,7 @@ extends Node2D
 @onready var moneda_scene = preload("res://scenes/moneda_rotando.tscn")
 @onready var seta_scene = preload("res://scenes/seta_sprite.tscn")
 @onready var estrella_scene = preload("res://scenes/estrella_sprite.tscn")
-#@onready var gameover_scene = preload("res://scenes/gameover.tscn")
+@onready var gameover_scene = preload("res://scenes/gameover.tscn")
 @onready var button_next_level_scene = preload("res://scenes/next_level_button.tscn")
 
 # REFERENCIA A AREA2D (FallZone):
@@ -27,7 +27,7 @@ extends Node2D
 # FUNCION INICIALIZADORA:
 func _ready():
 	# CONEXION A SEÑALES GAMEOVER y BUTTON-NEXT-LEVEL:
-	#FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
+	FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
 	FuncionesGenerales.connect("next_level_instance", Callable(self, "_on_next_level_instance"))
 	
 	# REFERENCIA ESTE NODO PRINCIPAL (MAIN):
@@ -84,8 +84,6 @@ func _ready():
 
 # CALL-DEFERRED INSTANCIAR-GOOMBA-PARACAIDAS:
 func instanciar_goomba_paracaidas():
-	pass
-	
 	var goomba = goomba_scene.instantiate()
 	goomba.global_position = Vector2(mario.global_position.x + 124, -20)
 	goomba.reset_tipo_goomba_cambio_a("paracaidas")
@@ -95,10 +93,8 @@ func instanciar_goomba_paracaidas():
 
 # INSTANCIAR GAME OVER:
 func _on_gameover_instance():
-	pass
-	
-	#var gameover = gameover_scene.instantiate()
-	#add_child(gameover)
+	var gameover = gameover_scene.instantiate()
+	add_child(gameover)
 
 # INSTANCIAR BUTTON-NEXT-LEVVEL:
 func _on_next_level_instance():

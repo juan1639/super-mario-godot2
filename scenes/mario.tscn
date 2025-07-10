@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwn5o8bf43uqr"]
+[gd_scene load_steps=24 format=3 uid="uid://bwn5o8bf43uqr"]
 
 [ext_resource type="Script" uid="uid://cv4rym5ix4sxf" path="res://scripts/mario.gd" id="1_bvgp0"]
 [ext_resource type="Texture2D" uid="uid://belgnktgel8wy" path="res://assets/textures/mario-ssheet-1.png" id="1_keuod"]
 [ext_resource type="AudioStream" uid="uid://ru13qcq25886" path="res://assets/audio/jumpbros.ogg" id="3_5gbmu"]
 [ext_resource type="Texture2D" uid="uid://e3v7lmf1ii0a" path="res://assets/textures/particula-humo.png" id="3_l5geh"]
+[ext_resource type="Texture2D" uid="uid://uclvkd52k178" path="res://assets/textures/mario-img-0.png" id="4_bdh24"]
 [ext_resource type="AudioStream" uid="uid://n77770apufpa" path="res://assets/audio/p-ping.mp3" id="4_wnd63"]
 [ext_resource type="AudioStream" uid="uid://d2d7cufijchkg" path="res://assets/audio/mario-lose-life.mp3" id="5_rgcl4"]
 [ext_resource type="AudioStream" uid="uid://dytp06wwcu0de" path="res://assets/audio/squit.mp3" id="6_cjj4f"]
@@ -27,6 +28,10 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgcl4"]
 atlas = ExtResource("1_keuod")
 region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdh24"]
+atlas = ExtResource("1_keuod")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvgp0"]
 atlas = ExtResource("1_keuod")
@@ -71,6 +76,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bdh24")
+}],
+"loop": true,
+"name": &"LoseLife",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bvgp0")
 }, {
 "duration": 1.0,
@@ -99,7 +112,8 @@ script = ExtResource("1_bvgp0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p0nfy")
-animation = &"FlagPole"
+animation = &"LoseLife"
+frame_progress = 0.53175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p0nfy")
@@ -145,12 +159,57 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_bdh24")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "x 4"
+
+[node name="PanelMiddleWorld" type="PanelContainer" parent="CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PanelMiddleWorld" type="PanelContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelMiddleWorld"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelMiddleWorld/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelMiddleWorld/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_bdh24")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelMiddleWorld/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "x 4"
 
 [node name="PanelTimeup" type="PanelContainer" parent="CanvasLayer"]
 offset_right = 40.0

@@ -205,7 +205,7 @@ func actions_lose_life():
 	
 	timerTransicionVidaMenos.start(3.1)
 	
-	GlobalValues.musicaFondo.stop()
+	musica_fondo.stop()
 	sonido_lose_life.play()
 
 # BONUS TIEMPO-SOBRANTE (FINAL NIVEL):

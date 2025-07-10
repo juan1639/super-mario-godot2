@@ -94,7 +94,7 @@ func otros_estados(delta, context):
 		if GlobalValues.estado_juego[estado]:
 			return
 	
-	FuncionesGenerales.aplicar_gravedad(delta, self)
+	FuncionesGenerales.aplicar_gravedad(delta, context)
 	context.move_and_slide()
 
 # ================================================================
