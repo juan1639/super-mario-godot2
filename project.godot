@@ -36,6 +36,19 @@ window/stretch/mode="canvas_items"
 
 theme/custom_font="uid://0aates0v5a4s"
 
+[layer_names]
+
+2d_physics/layer_1="Tilemap"
+2d_physics/layer_2="Goomba"
+2d_physics/layer_3="Mario"
+2d_physics/layer_4="EvitaCaerGoombas"
+2d_physics/layer_5="FallZones"
+2d_physics/layer_6="FlagPoleGoalZone"
+2d_physics/layer_7="ParacaidasZones"
+2d_physics/layer_8="Estrella"
+2d_physics/layer_9="Seta"
+2d_physics/layer_10="BloqueSprite"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

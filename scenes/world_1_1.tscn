@@ -161,6 +161,8 @@ tile_set = SubResource("TileSet_h6pmt")
 [node name="Collider0" type="StaticBody2D" parent="GoombasEvitarCaer"]
 z_index = 7
 position = Vector2(1120, 192)
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoombasEvitarCaer/Collider0"]
 position = Vector2(0, -10.5)
@@ -169,6 +171,8 @@ shape = SubResource("RectangleShape2D_i80hm")
 [node name="Collider1" type="StaticBody2D" parent="GoombasEvitarCaer"]
 z_index = 7
 position = Vector2(1400, 184)
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoombasEvitarCaer/Collider1"]
 position = Vector2(0.5, -4)
@@ -177,6 +181,8 @@ shape = SubResource("RectangleShape2D_f6ps6")
 [node name="Collider2" type="StaticBody2D" parent="GoombasEvitarCaer"]
 z_index = 7
 position = Vector2(0, 106)
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoombasEvitarCaer/Collider2"]
 position = Vector2(0, 1)
@@ -187,6 +193,8 @@ shape = SubResource("RectangleShape2D_hkjsk")
 [node name="Area2D0" type="Area2D" parent="FallZones"]
 z_index = 8
 position = Vector2(1248, 286)
+collision_layer = 16
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Area2D0"]
 position = Vector2(17.5, -9.5)
@@ -195,6 +203,8 @@ shape = SubResource("RectangleShape2D_t2qvq")
 [node name="Area2D1" type="Area2D" parent="FallZones"]
 z_index = 8
 position = Vector2(2463, 273)
+collision_layer = 16
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones/Area2D1"]
 position = Vector2(0.5, 3.5)
@@ -202,7 +212,9 @@ shape = SubResource("RectangleShape2D_dlodv")
 
 [node name="FlagPole" type="Area2D" parent="."]
 z_index = 8
-position = Vector2(3176, 117)
+position = Vector2(3173, 117)
+collision_layer = 32
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlagPole"]
 position = Vector2(4.5, -14.5)
@@ -211,6 +223,8 @@ shape = SubResource("RectangleShape2D_7uavv")
 [node name="GoalZone" type="Area2D" parent="."]
 z_index = 8
 position = Vector2(3288, 198)
+collision_layer = 32
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalZone"]
 position = Vector2(0, -26)
@@ -221,6 +235,8 @@ shape = SubResource("RectangleShape2D_v1vos")
 [node name="Area2D0" type="Area2D" parent="ParacaidasZones"]
 z_index = 8
 position = Vector2(361, 64)
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParacaidasZones/Area2D0"]
 position = Vector2(0, -11)
@@ -229,6 +245,8 @@ shape = SubResource("RectangleShape2D_e4v6v")
 [node name="Area2D1" type="Area2D" parent="ParacaidasZones"]
 z_index = 8
 position = Vector2(962, 157)
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParacaidasZones/Area2D1"]
 position = Vector2(-3, -32)
@@ -237,6 +255,8 @@ shape = SubResource("RectangleShape2D_1wqvl")
 [node name="Area2D2" type="Area2D" parent="ParacaidasZones"]
 z_index = 8
 position = Vector2(1487, 47)
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParacaidasZones/Area2D2"]
 position = Vector2(1, 1.5)
@@ -245,6 +265,8 @@ shape = SubResource("RectangleShape2D_srbte")
 [node name="Area2D3" type="Area2D" parent="ParacaidasZones"]
 z_index = 8
 position = Vector2(1563, 134)
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParacaidasZones/Area2D3"]
 position = Vector2(0, 17.5)
@@ -253,6 +275,8 @@ shape = SubResource("RectangleShape2D_ewule")
 [node name="Area2D4" type="Area2D" parent="ParacaidasZones"]
 z_index = 8
 position = Vector2(2224, 139)
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParacaidasZones/Area2D4"]
 position = Vector2(-1.5, -19)
@@ -261,6 +285,8 @@ shape = SubResource("RectangleShape2D_bxtsr")
 [node name="Area2D5" type="Area2D" parent="ParacaidasZones"]
 z_index = 8
 position = Vector2(2569, 145)
+collision_layer = 64
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParacaidasZones/Area2D5"]
 position = Vector2(-12, -7)

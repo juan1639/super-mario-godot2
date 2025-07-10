@@ -49,9 +49,11 @@ animations = [{
 size = Vector2(14, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e78ml"]
+size = Vector2(14, 16)
 
 [node name="EstrellaSprite" type="CharacterBody2D"]
 z_index = 24
+collision_layer = 128
 script = ExtResource("1_bab7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -63,6 +65,8 @@ frame_progress = 0.6863
 shape = SubResource("RectangleShape2D_5q153")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_e78ml")
