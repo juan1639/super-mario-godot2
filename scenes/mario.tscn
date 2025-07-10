@@ -100,7 +100,10 @@ animation = &"FlagPole"
 shape = SubResource("RectangleShape2D_p0nfy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.06)
+limit_left = 0
 limit_top = 0
+limit_right = 3380
 limit_bottom = 0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

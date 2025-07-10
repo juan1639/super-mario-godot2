@@ -22,7 +22,7 @@ var input_salto = false
 var acel_gravedad = 0.0
 
 # DISTANCIA A LA QUE SE ACTIVA GOOMBA (DISTANCIA MARIO-GOOMBA):
-const DISTANCIA_ACTIVACION = 200
+const DISTANCIA_ACTIVACION = 300
 
 # REFERENCIA AL PARACAIDAS:
 @onready var paracaidasSprite = $ParacaidasGoomba

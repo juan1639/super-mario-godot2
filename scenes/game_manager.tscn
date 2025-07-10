@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbc2w6b66ha1l"]
+[gd_scene load_steps=5 format=3 uid="uid://dbc2w6b66ha1l"]
 
 [ext_resource type="Script" uid="uid://bc4ymytyyxrfn" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="PackedScene" uid="uid://b8ja1jigm7dwe" path="res://scenes/world_1_1.tscn" id="2_glms7"]
 [ext_resource type="PackedScene" uid="uid://bwn5o8bf43uqr" path="res://scenes/mario.tscn" id="3_oo155"]
+[ext_resource type="PackedScene" uid="uid://b2q6elqipnirj" path="res://scenes/marcadores.tscn" id="4_oo155"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_hwd4i")
@@ -51,3 +52,5 @@ position = Vector2(2745, 191)
 
 [node name="Marker2D12" type="Marker2D" parent="GoombaSpawns"]
 position = Vector2(2774, 190)
+
+[node name="Marcadores" parent="." instance=ExtResource("4_oo155")]
