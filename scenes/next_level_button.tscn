@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi7oa50ch3d3o"]
+
+[ext_resource type="Script" uid="uid://c132ln0gxvvk8" path="res://scripts/next_level_button.gd" id="1_a18l3"]
+
+[node name="NextLevelButton" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -27.5
+offset_right = 102.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a18l3")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.956863, 0.905882, 0.0392157, 1)
+text = "Continuar"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Button" to="PanelContainer" method="_on_button_pressed"]

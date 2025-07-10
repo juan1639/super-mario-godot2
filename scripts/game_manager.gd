@@ -9,7 +9,7 @@ extends Node2D
 @onready var seta_scene = preload("res://scenes/seta_sprite.tscn")
 @onready var estrella_scene = preload("res://scenes/estrella_sprite.tscn")
 #@onready var gameover_scene = preload("res://scenes/gameover.tscn")
-#@onready var button_next_level_scene = preload("res://scenes/continuar_next_level.tscn")
+@onready var button_next_level_scene = preload("res://scenes/next_level_button.tscn")
 
 # REFERENCIA A AREA2D (FallZone):
 @onready var fallZones = $World1_1/FallZones
@@ -79,19 +79,19 @@ func _ready():
 	goalZone.connect("body_entered", Callable(mario, "_on_goal_zone_body_entered"))
 	
 	# CONECTAR SEÑALES de zoneInstanciaParacaidas:
-	#for zone in zoneInstanciaParacaidas.get_children():
-		#zone.connect("body_entered", Callable(mario, "_on_instancia_paracaidas_body_entered").bind(zone))
+	for zone in zoneInstanciaParacaidas.get_children():
+		zone.connect("body_entered", Callable(mario, "_on_instancia_paracaidas_body_entered").bind(zone))
 
 # CALL-DEFERRED INSTANCIAR-GOOMBA-PARACAIDAS:
 func instanciar_goomba_paracaidas():
 	pass
 	
-	#var goomba = goomba_scene.instantiate()
-	#goomba.global_position = Vector2(mario.global_position.x + 120, -200)
-	#goomba.get_child(0).reset_tipo_goomba_cambio_a("paracaidas")
-	#goomba.get_child(0).get_child(3).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
-	#goomba.get_child(0).get_child(4).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
-	#add_child(goomba)
+	var goomba = goomba_scene.instantiate()
+	goomba.global_position = Vector2(mario.global_position.x + 124, -20)
+	goomba.reset_tipo_goomba_cambio_a("paracaidas")
+	goomba.get_child(2).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
+	goomba.get_child(3).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
+	add_child(goomba)
 
 # INSTANCIAR GAME OVER:
 func _on_gameover_instance():
@@ -102,7 +102,5 @@ func _on_gameover_instance():
 
 # INSTANCIAR BUTTON-NEXT-LEVVEL:
 func _on_next_level_instance():
-	pass
-	
-	#var buttonNextLevel = button_next_level_scene.instantiate()
-	#add_child(buttonNextLevel)
+	var buttonNextLevel = button_next_level_scene.instantiate()
+	add_child(buttonNextLevel)

@@ -89,7 +89,7 @@ size = Vector2(12, 16)
 [node name="Mario" type="CharacterBody2D"]
 z_index = 15
 collision_layer = 4
-collision_mask = 241
+collision_mask = 113
 script = ExtResource("1_bvgp0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
