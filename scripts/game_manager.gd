@@ -50,6 +50,10 @@ func _ready():
 	GlobalValues.flag_sprite = $World1_1/FlagSprite
 	GlobalValues.ref_tilemap = $World1_1/TileMapLayer
 	
+	# REFERENCIA A OCULTADOR DE LA INTERROGACION-VIDA-EXTRA:
+	GlobalValues.ref_oculta_tile = $World1_1/OcultaTile
+	GlobalValues.ref_oculta_tile.global_position = GlobalValues.lista_setas_extra[0] + Vector2(0, 16)
+	
 	# INSTANCIA DE UNA MONEDA-SPRITE (Posteriormente solo hace falta cambiar posicion):
 	GlobalValues.monedaSprite = moneda_scene.instantiate()
 	GlobalValues.monedaSprite.global_position = Vector2(-990, -890)

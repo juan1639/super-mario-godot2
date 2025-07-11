@@ -111,6 +111,10 @@ func moneda_tween(item_pos, sonido_coin, global_position):
 	
 	if item_pos in GlobalValues.lista_setas or item_pos in GlobalValues.lista_setas_extra:
 		if not item_pos in GlobalValues.lista_desactivados:
+			
+			if item_pos in GlobalValues.lista_setas_extra:
+				GlobalValues.ref_oculta_tile.visible = false
+			
 			GlobalValues.setaSprite.global_position = item_pos
 			GlobalValues.setaSprite.activa = true
 			GlobalValues.setaSprite.sonido_seta.play()

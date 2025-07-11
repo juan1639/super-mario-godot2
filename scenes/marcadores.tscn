@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2q6elqipnirj"]
+[gd_scene load_steps=4 format=3 uid="uid://b2q6elqipnirj"]
 
 [ext_resource type="Script" uid="uid://cq7wxonqoxo6v" path="res://scripts/marcadores.gd" id="1_aptd4"]
+[ext_resource type="Texture2D" uid="uid://bhaspumxmjc0m" path="res://assets/textures/coins-ssheet-alpha.png" id="2_cdxkj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aptd4"]
 bg_color = Color(0.0666667, 0.364706, 0.894118, 0.482353)
@@ -42,17 +43,21 @@ vertical_alignment = 1
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 1
 
-[node name="CoinsText" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer1"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Coins"
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer1/Label"]
+position = Vector2(15, 7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cdxkj")
+hframes = 6
 
 [node name="CoinsNum" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
+text = "x 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

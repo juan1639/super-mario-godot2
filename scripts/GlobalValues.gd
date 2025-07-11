@@ -12,6 +12,7 @@ const BOTTOM_LIMIT = 900 # BOTTOM-LIMIT (si es necesario)
 # REFERENCIAS GLOBALES:
 var game_manager_node: Node2D = null
 var ref_tilemap: TileMapLayer = null
+var ref_oculta_tile: Sprite2D = null
 var flag_sprite: AnimatedSprite2D = null
 var bloqueSprite: CharacterBody2D = null
 var monedaSprite: AnimatedSprite2D = null
