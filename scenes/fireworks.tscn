@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://l4b0eeubln7n"]
+[gd_scene load_steps=7 format=3 uid="uid://l4b0eeubln7n"]
 
 [ext_resource type="Texture2D" uid="uid://cbgmbksjxiegr" path="res://assets/textures/particula-fireworks.png" id="1_cvf0l"]
 [ext_resource type="AudioStream" uid="uid://uye5npjo3w2g" path="res://assets/audio/firework-oneshot.mp3" id="1_q76is"]
 [ext_resource type="Texture2D" uid="uid://cgoix01cbc0nw" path="res://assets/textures/particula-central-fireworks.png" id="2_fvmay"]
+[ext_resource type="Texture2D" uid="uid://ct26xw3pvxsty" path="res://assets/textures/castillo-level1-1.png" id="4_gyf3s"]
 
 [sub_resource type="Curve" id="Curve_cvf0l"]
 _data = [Vector2(0.0340909, 1), 0.0, 0.0, 0, 0, Vector2(0.215909, 0.853933), -1.27582, -1.27582, 0, 0, Vector2(0.988636, 0), 0.0, 0.0, 0, 0]
@@ -44,6 +45,13 @@ gravity = Vector2(0, 0)
 scale_amount_min = 0.1
 scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_fvmay")
+
+[node name="Castillo" type="TextureRect" parent="."]
+offset_left = -41.0
+offset_top = -72.0
+offset_right = 39.0
+offset_bottom = 7.0
+texture = ExtResource("4_gyf3s")
 
 [node name="SonidoFireWork" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_q76is")

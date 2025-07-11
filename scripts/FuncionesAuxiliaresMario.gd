@@ -16,6 +16,10 @@ func transicion_goal_zone(delta, context):
 	if not GlobalValues.estado_juego["transicion_goal_zone"]:
 		return
 	
+	if context.velocity.x <= 0.0:
+		context.velocity = Vector2(abs(context.VEL_MAX / 8), 0)
+		context.sprite.flip_h = false
+	
 	FuncionesGenerales.aplicar_gravedad(delta, context)
 	context.move_and_slide()
 	AnimacionesMario.update_animation(context)
@@ -100,7 +104,8 @@ func otros_estados(delta, context):
 # CHECK START-GO-GOAL-ZONE:
 func check_start_go_goal_zone(context):
 	if context.is_on_floor():
-		context.velocity = Vector2(abs(context.VEL_MAX / 9), 0)
+		context.velocity = Vector2(abs(context.VEL_MAX / 8), 0)
+		context.sprite.flip_h = false
 		FuncionesGenerales.reset_estados_cambio_estado_a("transicion_goal_zone")
 
 # SELECT BONUS BANDERA (En funcion de la altura alcanzada):
