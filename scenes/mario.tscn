@@ -94,7 +94,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0nfy"]
@@ -112,8 +112,9 @@ script = ExtResource("1_bvgp0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p0nfy")
-animation = &"LoseLife"
-frame_progress = 0.53175
+animation = &"Walk"
+frame = 1
+frame_progress = 0.153945
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p0nfy")

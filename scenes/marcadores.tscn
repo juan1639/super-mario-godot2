@@ -23,7 +23,7 @@ theme_override_constants/margin_bottom = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 79
+theme_override_constants/separation = 83
 
 [node name="VBoxContainer0" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
