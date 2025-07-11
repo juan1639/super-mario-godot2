@@ -110,7 +110,7 @@ func check_start_go_goal_zone(context):
 
 # SELECT BONUS BANDERA (En funcion de la altura alcanzada):
 func select_bonus_bandera(context):
-	if context.altura_alcanzada.y < 60:
+	if context.altura_alcanzada.y < 65:
 		return 5000
 	elif context.altura_alcanzada.y < 95:
 		return 2000

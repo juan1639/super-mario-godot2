@@ -18,7 +18,7 @@ func salto_jugador(delta, context):
 		context.sonido_salto.play()
 		
 		# SALTO BASE + impulso adicional
-		var impulso_extra = abs(context.velocity.x) * 0.48
+		var impulso_extra = abs(context.velocity.x) * 0.5
 		context.velocity.y = context.POTENCIA_SALTO - impulso_extra
 		context.cpuParticles.emitting = true
 		context.cpuParticles.global_position = context.global_position + Vector2(0, 16)

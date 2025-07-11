@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # VELOCIDAD HORIZONAL
-const VEL_MAX = 215.0
-const ACELERACION = 180.0
+const VEL_MAX = 197.0
+const ACELERACION = 175.0
 const DECELERACION = 230.0
 
 # SALTO Y GRAVEDAD:
