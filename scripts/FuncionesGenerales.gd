@@ -42,6 +42,12 @@ func reset_estados_cambio_estado_a(estado):
 	
 	GlobalValues.estado_juego[estado] = true
 
+# RESETEAR MARCADORES:
+func reset_scores():
+	GlobalValues.marcadores["score"] = 0
+	GlobalValues.marcadores["coins"] = 0
+	GlobalValues.marcadores["lives"] = 3
+
 # EMITIR SEÑAL GAMEOVER:
 func emitir_signal_gameover():
 	emit_signal("gameover_instance")

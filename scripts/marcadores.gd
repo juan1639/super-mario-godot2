@@ -9,12 +9,11 @@ extends PanelContainer
 var signalConnect = false
 
 func _ready():
+	print("Instanciando marcadores")
 	if FuncionesTilesMario.has_signal("marcador_actualizado"):
 		#print("FuncionesTilesMario tiene señal marcador_actualizado")
 		FuncionesTilesMario.connect("marcador_actualizado", Callable(self, "_actualizar_score"))
 		FuncionesTilesMario.connect("monedas_actualizadas", Callable(self, "_actualizar_monedas"))
-	
-	GlobalValues.marcadores["score"] = 0
 
 # FUNCION EJECUTANDOSE A 60 FPS (PARA RENDERIZAR EL TIEMPO):
 func _process(delta):

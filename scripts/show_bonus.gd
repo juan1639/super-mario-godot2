@@ -14,7 +14,7 @@ const direccion = -1
 # FUNCION INIT:
 func _ready():
 	frame = frame_ssheet
-	global_position += Vector2(16, -48) if frame != 2 else Vector2(24, 24)
+	global_position += Vector2(48, 32) if frame <= 2 else Vector2(16, -48)
 	timer.start(1.0)
 
 # FUNCION A 60 FPS:

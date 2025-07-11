@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://chliuop5h5ow7"]
+[gd_scene load_steps=4 format=3 uid="uid://chliuop5h5ow7"]
 
 [ext_resource type="Script" uid="uid://2rie1t00hdy5" path="res://scripts/game_over.gd" id="1_ncp31"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncp31"]
+bg_color = Color(0.294118, 0.117647, 0.352941, 0.933333)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0yjy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -23,6 +30,7 @@ offset_right = 125.5
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncp31")
 script = ExtResource("1_ncp31")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]

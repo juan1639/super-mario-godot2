@@ -11,7 +11,6 @@ func transicion_flag_pole(delta, context):
 	check_start_go_goal_zone(context)
 	context.move_and_slide()
 	AnimacionesMario.update_animation(context)
-	return
 
 func transicion_goal_zone(delta, context):
 	if not GlobalValues.estado_juego["transicion_goal_zone"]:
@@ -21,7 +20,6 @@ func transicion_goal_zone(delta, context):
 	context.move_and_slide()
 	AnimacionesMario.update_animation(context)
 	FuncionesMovSaltoMario.aplicar_clamps(context)
-	return
 
 func transicion_vida_menos(delta, context):
 	if not GlobalValues.estado_juego["transicion_vida_menos"]:
@@ -36,6 +34,7 @@ func transicion_vida_menos(delta, context):
 		print("señal gameover")
 		FuncionesGenerales.reset_estados_cambio_estado_a("game_over")
 		FuncionesGenerales.emitir_signal_gameover()
+		return
 	
 	if context.timerTransicionVidaMenos.time_left == 0.0 and GlobalValues.estado_juego["transicion_vida_menos"]:
 		context.timerTransicionVidaMenos.start(2.1)
@@ -43,8 +42,7 @@ func transicion_vida_menos(delta, context):
 		FuncionesGenerales.reset_estados_cambio_estado_a("transicion_next_vida")
 		FuncionesMovSaltoMario.reset_position(context)
 		context.panelShowVidas.visible = true if not GlobalValues.estado_juego["game_over"] else false
-		context.panelShowVidasMiddle.visible = true if not GlobalValues.estado_juego["game_over"] else false
-	return
+		return
 
 func transicion_fireworks(delta, context):
 	if not GlobalValues.estado_juego["transicion_fireworks"]:
@@ -71,7 +69,6 @@ func transicion_next_vida(delta, context):
 	if context.timerTransicionVidaMenos.time_left == 0.0:
 		FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 		context.panelShowVidas.visible = false
-		context.panelShowVidasMiddle.visible = false
 		context.musica_fondo.play()
 
 func en_juego(delta, context):
@@ -108,10 +105,10 @@ func check_start_go_goal_zone(context):
 
 # SELECT BONUS BANDERA (En funcion de la altura alcanzada):
 func select_bonus_bandera(context):
-	if context.altura_alcanzada.y < 55:
+	if context.altura_alcanzada.y < 60:
 		return 5000
-	elif context.altura_alcanzada.y < 110:
+	elif context.altura_alcanzada.y < 95:
 		return 2000
-	elif context.altura_alcanzada.y < 250:
+	elif context.altura_alcanzada.y < 150:
 		return 800
 	return 400

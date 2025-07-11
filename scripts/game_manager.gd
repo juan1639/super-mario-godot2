@@ -26,6 +26,16 @@ extends Node2D
 
 # FUNCION INICIALIZADORA:
 func _ready():
+	print("Start new game")
+	
+	# RESETEAR MARCADORES:
+	FuncionesGenerales.reset_scores()
+	FuncionesTilesMario.agregar_puntos_sin_texto(-99)
+	FuncionesTilesMario.agregar_monedas(-99)
+	
+	# RESETEAR LISTA-DESACTIVADOS:
+	GlobalValues.lista_desactivados = []
+	
 	# CONEXION A SEÑALES GAMEOVER y BUTTON-NEXT-LEVEL:
 	FuncionesGenerales.connect("gameover_instance", Callable(self, "_on_gameover_instance"))
 	FuncionesGenerales.connect("next_level_instance", Callable(self, "_on_next_level_instance"))
@@ -44,11 +54,6 @@ func _ready():
 	GlobalValues.monedaSprite = moneda_scene.instantiate()
 	GlobalValues.monedaSprite.global_position = Vector2(-990, -890)
 	add_child(GlobalValues.monedaSprite)
-	
-	# INSTANCIA DE UN BLOQUE-SPRITE (Posteriormente solo hace falta cambiar posicion):
-	#GlobalValues.bloqueSprite = bloquesSprites_scene.instantiate()
-	#GlobalValues.bloqueSprite.global_position = Vector2(-1300, -500)
-	#add_child(GlobalValues.bloqueSprite)
 	
 	# INSTANCIA DE UNA SETA (Posteriormente solo hace falta cambiar posicion):
 	GlobalValues.setaSprite = seta_scene.instantiate()
@@ -69,6 +74,12 @@ func _ready():
 		goomba.get_child(2).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
 		goomba.get_child(3).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
 		add_child(goomba)
+	
+	# MOSTRAR NUMERO DE CHILDRENS DE ESTA ESCENA (PRINCIPAL):
+	print("Nro childrens: ", get_child_count())
+	
+	for child in get_children():
+		print("Children: ", child)
 	
 	# CONECTAR SEÑAL de fallZone:
 	for fallZone in fallZones.get_children():

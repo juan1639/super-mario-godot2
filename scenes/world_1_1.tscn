@@ -298,5 +298,4 @@ position = Vector2(3159, 56)
 sprite_frames = SubResource("SpriteFrames_i80hm")
 animation = &"Ondear"
 autoplay = "Ondear"
-frame = 1
-frame_progress = 0.579414
+frame = 2

@@ -1,10 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://l4b0eeubln7n"]
+[gd_scene load_steps=6 format=3 uid="uid://l4b0eeubln7n"]
 
+[ext_resource type="Texture2D" uid="uid://cbgmbksjxiegr" path="res://assets/textures/particula-fireworks.png" id="1_cvf0l"]
 [ext_resource type="AudioStream" uid="uid://uye5npjo3w2g" path="res://assets/audio/firework-oneshot.mp3" id="1_q76is"]
+[ext_resource type="Texture2D" uid="uid://cgoix01cbc0nw" path="res://assets/textures/particula-central-fireworks.png" id="2_fvmay"]
+
+[sub_resource type="Curve" id="Curve_cvf0l"]
+_data = [Vector2(0.0340909, 1), 0.0, 0.0, 0, 0, Vector2(0.215909, 0.853933), -1.27582, -1.27582, 0, 0, Vector2(0.988636, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_fvmay"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.948864, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Fireworks" type="Node2D"]
 
 [node name="ParticlesFireworks" type="CPUParticles2D" parent="."]
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 80
+texture = ExtResource("1_cvf0l")
+lifetime = 1.05
+one_shot = true
+explosiveness = 1.0
+randomness = 0.39
+fixed_fps = 30
+spread = 180.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 84.6
+initial_velocity_max = 104.29
+scale_amount_min = 0.03
+scale_amount_max = 0.04
+scale_amount_curve = SubResource("Curve_cvf0l")
+
+[node name="ParticulaCentral" type="CPUParticles2D" parent="."]
+z_index = 100
+emitting = false
+amount = 1
+texture = ExtResource("2_fvmay")
+lifetime = 0.51
+one_shot = true
+fixed_fps = 30
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_fvmay")
 
 [node name="SonidoFireWork" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_q76is")
+autoplay = true

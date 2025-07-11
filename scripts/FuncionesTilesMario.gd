@@ -164,8 +164,16 @@ func agregar_puntos(cantidad, global_position):
 # SOLO SUMAR PUNTOS (BONUS-FINAL-NIVEL):
 func agregar_puntos_sin_texto(cantidad):
 	GlobalValues.marcadores["score"] += cantidad
+	
+	if cantidad < 0:
+		GlobalValues.marcadores["score"] = 0
+	
 	emit_signal("marcador_actualizado")
 
 func agregar_monedas(cantidad):
 	GlobalValues.marcadores["coins"] += cantidad
+	
+	if cantidad < 0:
+		GlobalValues.marcadores["coins"] = 0
+	
 	emit_signal("monedas_actualizadas")

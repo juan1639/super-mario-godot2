@@ -35,12 +35,10 @@ const PUNTOS_POR_SEGUNDO := 50
 
 # REFERENCIAS:
 @onready var sprite = $AnimatedSprite2D
-#@onready var animationPlayer = $AnimationPlayer
 @onready var cpuParticles = $CPUParticles2D
 @onready var cpuParticlesFireworks = preload("res://scenes/fireworks.tscn")
 #@onready var goomba_scene = preload("res://scenes/goomba.tscn")
 @onready var panelShowVidas = $CanvasLayer/PanelContainer
-@onready var panelShowVidasMiddle = $CanvasLayer/PanelMiddleWorld
 @onready var panelTimeup = $CanvasLayer/PanelTimeup
 @onready var timer = $Timer
 @onready var timerColision = $TimerColision
@@ -72,6 +70,7 @@ var lista_estados_transiciones = [
 
 # FUNCION INICIALIZADORA:
 func _ready():
+	#print("Instancia Mario")
 	FuncionesMovSaltoMario.reset_position(self)
 	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 	sonido_salto.volume_db = -20.0
@@ -182,8 +181,13 @@ func _on_timer_timeout_estrella():
 		fireworks = cpuParticlesFireworks.instantiate()
 		add_child(fireworks)
 		fireworks.get_child(0).emitting = true
-		fireworks.get_child(0).global_position = Vector2(randf_range(1350, 1650), randf_range(-100, -150))
+		fireworks.get_child(1).emitting = true
+		var rnd_position = Vector2(randf_range(3120 , 3350), randf_range(75, 150))
+		fireworks.get_child(0).global_position = rnd_position
+		fireworks.get_child(1).global_position = rnd_position
 		fireworks.get_child(0).z_index = -1
+		fireworks.get_child(1).z_index = -1
+		fireworks.get_child(1).modulate = Color(1, 1, 1, 0.6)
 		timerEstrella.start(2.1)
 	else:
 		print("Timeup invulnerabilidad")
@@ -201,7 +205,7 @@ func actions_lose_life():
 	
 	var newText = "x " + str(GlobalValues.marcadores["lives"])
 	panelShowVidas.get_child(0).get_child(0).get_child(1).text = newText
-	panelShowVidasMiddle.get_child(0).get_child(0).get_child(1).text = newText
+	#panelShowVidasMiddle.get_child(0).get_child(0).get_child(1).text = newText
 	
 	timerTransicionVidaMenos.start(3.1)
 	

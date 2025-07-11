@@ -29,7 +29,7 @@ var marcadores = {
 	"coins": 0,
 	"world": [1, 1],
 	"time:": TIEMPO_INICIAL,
-	"lives": 4
+	"lives": 3
 }
 
 # ESTADOS DEL JUEGO
