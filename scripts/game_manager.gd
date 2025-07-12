@@ -1,5 +1,11 @@
 extends Node2D
 
+# REFERENCIAS A LOS WORLDS:
+@onready var world1_1_scene = preload("res://scenes/world_1_1.tscn")
+
+# WORLD-CONTAINER (CURRENT WORLD):
+@onready var world_container = $WorldContainer
+
 # REFERENCIAS A SPRITES (GOOMBA, etc.):
 @onready var goomba_scene = preload("res://scenes/goomba.tscn")
 @onready var goomba_spawns = $GoombaSpawns
@@ -12,14 +18,14 @@ extends Node2D
 @onready var button_next_level_scene = preload("res://scenes/next_level_button.tscn")
 
 # REFERENCIA A AREA2D (FallZone):
-@onready var fallZones = $World1_1/FallZones
+#@onready var fallZones = $World1_1/FallZones
 
 # REFERENCIAS A LA BANDERA Y GOAL-ZONE:
-@onready var goalZone = $World1_1/GoalZone
-@onready var flagPole = $World1_1/FlagPole
+#@onready var goalZone = $World1_1/GoalZone
+#@onready var flagPole = $World1_1/FlagPole
 
 # REFERENCIA A LAS ZONAS INSTANCIA-GOOMBAS-PARACAIDAS:
-@onready var zoneInstanciaParacaidas = $World1_1/ParacaidasZones
+#@onready var zoneInstanciaParacaidas = $World1_1/ParacaidasZones
 
 # REFERENCIA A MARIO/JUGADOR:
 @onready var mario = $Mario
@@ -27,6 +33,15 @@ extends Node2D
 # FUNCION INICIALIZADORA:
 func _ready():
 	print("Start new game")
+	
+	# INSTANCIAR CURRENT-WORLD:
+	var current_world = world1_1_scene.instantiate()
+	world_container.add_child(current_world)
+	
+	var fallZones = current_world.get_node("FallZones")
+	var goalZone = current_world.get_node("GoalZone")
+	var flagPole = current_world.get_node("FlagPole")
+	var zoneInstanciaParacaidas = current_world.get_node("ParacaidasZones")
 	
 	# RESETEAR MARCADORES:
 	FuncionesGenerales.reset_scores()
@@ -47,11 +62,15 @@ func _ready():
 	GlobalValues.marioRG = mario
 	
 	# REFERENCIAS A LA BANDERA Y AL TILEMAP:
-	GlobalValues.flag_sprite = $World1_1/FlagSprite
-	GlobalValues.ref_tilemap = $World1_1/TileMapLayer
+	#GlobalValues.flag_sprite = $World1_1/FlagSprite
+	GlobalValues.flag_sprite = current_world.get_node("FlagSprite")
+	
+	#GlobalValues.ref_tilemap = $World1_1/TileMapLayer
+	GlobalValues.ref_tilemap = current_world.get_node("TileMapLayer")
 	
 	# REFERENCIA A OCULTADOR DE LA INTERROGACION-VIDA-EXTRA:
-	GlobalValues.ref_oculta_tile = $World1_1/OcultaTile
+	#GlobalValues.ref_oculta_tile = $World1_1/OcultaTile
+	GlobalValues.ref_oculta_tile = current_world.get_node("OcultaTile")
 	GlobalValues.ref_oculta_tile.global_position = GlobalValues.lista_setas_extra[0] + Vector2(0, 16)
 	
 	# INSTANCIA DE UNA MONEDA-SPRITE (Posteriormente solo hace falta cambiar posicion):
@@ -69,6 +88,9 @@ func _ready():
 	GlobalValues.estrellaSprite.global_position = Vector2(-890, -950)
 	GlobalValues.estrellaSprite.get_child(2).connect("body_entered", Callable(mario, "_on_estrella_body_entered"))
 	add_child(GlobalValues.estrellaSprite)
+	
+	# REFERENCIA A LOS GOOMBA-SPAWNS:
+	#var goomba_spawns = current_world.get_node("GoombaSpawns")
 	
 	# INSTANCIAR GOOMBAS:
 	for spawn_point in goomba_spawns.get_children():
