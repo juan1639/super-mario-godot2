@@ -9,8 +9,7 @@ extends Node2D
 
 # REFERENCIAS A SPRITES (GOOMBA, etc.):
 @onready var goomba_scene = preload("res://scenes/goomba.tscn")
-@onready var goomba_spawns = $GoombaSpawns
-
+#@onready var goomba_spawns = $GoombaSpawns
 @onready var bloque_scene = preload("res://scenes/bloque_sprite.tscn")
 @onready var moneda_scene = preload("res://scenes/moneda_rotando.tscn")
 @onready var seta_scene = preload("res://scenes/seta_sprite.tscn")
@@ -23,7 +22,7 @@ extends Node2D
 
 # FUNCION INICIALIZADORA:
 func _ready():
-	print("Start new game")
+	print("Start new game ")
 	
 	# INSTANCIAR CURRENT-WORLD:
 	var current_world = GlobalValues.scenes[1].instantiate()
@@ -33,6 +32,7 @@ func _ready():
 	var goalZone = current_world.get_node("GoalZone")
 	var flagPole = current_world.get_node("FlagPole")
 	var zoneInstanciaParacaidas = current_world.get_node("ParacaidasZones")
+	var goomba_spawns = current_world.get_node("GoombaSpawns")
 	
 	# RESETEAR MARCADORES:
 	FuncionesGenerales.reset_scores()
