@@ -9,6 +9,12 @@ const LIMITE_IZ = 0
 const LIMITE_DE = 3400
 const BOTTOM_LIMIT = 900 # BOTTOM-LIMIT (si es necesario)
 
+# ESCENAS (NIVELES):
+var scenes = [
+	preload("res://scenes/world_1_1.tscn"),
+	preload("res://scenes/world_1_2.tscn")
+]
+
 # REFERENCIAS GLOBALES:
 var game_manager_node: Node2D = null
 var ref_tilemap: TileMapLayer = null

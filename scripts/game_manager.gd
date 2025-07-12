@@ -1,7 +1,8 @@
 extends Node2D
 
 # REFERENCIAS A LOS WORLDS:
-@onready var world1_1_scene = preload("res://scenes/world_1_1.tscn")
+#@onready var world1_1_scene = preload("res://scenes/world_1_1.tscn")
+#@onready var world1_2_scene = preload("res://scenes/world_1_2.tscn")
 
 # WORLD-CONTAINER (CURRENT WORLD):
 @onready var world_container = $WorldContainer
@@ -17,16 +18,6 @@ extends Node2D
 @onready var gameover_scene = preload("res://scenes/gameover.tscn")
 @onready var button_next_level_scene = preload("res://scenes/next_level_button.tscn")
 
-# REFERENCIA A AREA2D (FallZone):
-#@onready var fallZones = $World1_1/FallZones
-
-# REFERENCIAS A LA BANDERA Y GOAL-ZONE:
-#@onready var goalZone = $World1_1/GoalZone
-#@onready var flagPole = $World1_1/FlagPole
-
-# REFERENCIA A LAS ZONAS INSTANCIA-GOOMBAS-PARACAIDAS:
-#@onready var zoneInstanciaParacaidas = $World1_1/ParacaidasZones
-
 # REFERENCIA A MARIO/JUGADOR:
 @onready var mario = $Mario
 
@@ -35,7 +26,7 @@ func _ready():
 	print("Start new game")
 	
 	# INSTANCIAR CURRENT-WORLD:
-	var current_world = world1_1_scene.instantiate()
+	var current_world = GlobalValues.scenes[1].instantiate()
 	world_container.add_child(current_world)
 	
 	var fallZones = current_world.get_node("FallZones")
@@ -62,14 +53,10 @@ func _ready():
 	GlobalValues.marioRG = mario
 	
 	# REFERENCIAS A LA BANDERA Y AL TILEMAP:
-	#GlobalValues.flag_sprite = $World1_1/FlagSprite
 	GlobalValues.flag_sprite = current_world.get_node("FlagSprite")
-	
-	#GlobalValues.ref_tilemap = $World1_1/TileMapLayer
 	GlobalValues.ref_tilemap = current_world.get_node("TileMapLayer")
 	
 	# REFERENCIA A OCULTADOR DE LA INTERROGACION-VIDA-EXTRA:
-	#GlobalValues.ref_oculta_tile = $World1_1/OcultaTile
 	GlobalValues.ref_oculta_tile = current_world.get_node("OcultaTile")
 	GlobalValues.ref_oculta_tile.global_position = GlobalValues.lista_setas_extra[0] + Vector2(0, 16)
 	
