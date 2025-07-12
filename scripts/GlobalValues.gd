@@ -46,6 +46,9 @@ var estado_juego = {
 	"game_over": false
 }
 
+# LISTA DE GOOMBAS:
+var goombas_instancias = []
+
 # ITEMS (SETAS, y SETAS-EXTRA):
 var lista_setas = [
 	Vector2(344, 136), Vector2(1256, 136), Vector2(1752, 72)

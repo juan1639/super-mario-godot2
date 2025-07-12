@@ -28,7 +28,6 @@ FuncionesMovSaltoMario="*res://scripts/FuncionesMovSaltoMario.gd"
 
 window/size/viewport_width=427
 window/size/viewport_height=240
-window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -50,6 +49,7 @@ theme/custom_font="uid://0aates0v5a4s"
 2d_physics/layer_9="Seta"
 2d_physics/layer_10="BloqueSprite"
 2d_physics/layer_11="GoombaArea2D"
+2d_physics/layer_12="BloqueSpriteArea2D"
 
 [rendering]
 

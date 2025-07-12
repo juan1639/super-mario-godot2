@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://brujiq5va0qko"]
+[gd_scene load_steps=16 format=3 uid="uid://brujiq5va0qko"]
 
 [ext_resource type="Texture2D" uid="uid://7kg3t6uy65cj" path="res://assets/textures/goomba-ssheet-alpha.png" id="1_21hcc"]
 [ext_resource type="Script" uid="uid://r5i2qwr5747" path="res://scripts/goomba.gd" id="1_s1jgw"]
@@ -17,6 +17,10 @@ atlas = ExtResource("1_21hcc")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgpj4"]
+atlas = ExtResource("1_21hcc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hfl1"]
 atlas = ExtResource("1_21hcc")
 region = Rect2(16, 0, 16, 16)
 
@@ -49,10 +53,13 @@ animations = [{
 "name": &"Walk",
 "speed": 2.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hfl1")
+}],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2qtu"]
@@ -108,15 +115,14 @@ script = ExtResource("1_s1jgw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l0j8n")
-animation = &"IsDyingNotAplastado"
-frame_progress = 0.56011
+frame_progress = 0.519232
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y2qtu")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 1024
-collision_mask = 4
+collision_mask = 2052
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_21hcc")

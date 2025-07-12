@@ -78,6 +78,7 @@ func _ready():
 		goomba.get_child(2).connect("body_entered", Callable(mario, "_on_goomba_body_entered").bind(goomba))
 		goomba.get_child(3).connect("body_entered", Callable(mario, "_on_aplastar_goomba_body_entered").bind(goomba))
 		add_child(goomba)
+		GlobalValues.goombas_instancias.append(goomba)
 	
 	# MOSTRAR NUMERO DE CHILDRENS DE ESTA ESCENA (PRINCIPAL):
 	print("Nro childrens: ", get_child_count())

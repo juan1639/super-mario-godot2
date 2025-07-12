@@ -119,6 +119,14 @@ func update_animation():
 func update_animation_paracaidas():
 	paracaidasSprite.get_child(0).play("Paracaidas")
 
+# SEÑALES - ENTRAR EN BLOQUE-SPRITE:
+func _on_bloque_sprite_body_entered(body):
+	if body == self:
+		#print("colision bloque-sprite")
+		is_dying_not_aplastado = true
+		timerGoombaAplastado.start(0.4)
+		velocity.y = -200
+
 # RESET TIPO-GOOMBA Y ESTABLECER EL NUEVO:
 func reset_tipo_goomba_cambio_a(new_tipo):
 	for keyName in tipo_goomba.keys():
