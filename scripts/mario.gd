@@ -53,6 +53,7 @@ const PUNTOS_POR_SEGUNDO := 50
 @onready var musica_level_up = $MusicaLevelUp
 @onready var musica_estrella = $MusicaEstrella
 @onready var musica_fondo = $MusicaFondo
+@onready var musica_fondo_under = $MusicaFondoUnderground
 
 # REFERENCIAS OTRAS ESCENAS:
 var fireworks: Node2D = null
@@ -80,7 +81,8 @@ func _ready():
 	timerColision.start(0.1)
 	timerTransicionVidaMenos.start(3.1)
 	timerEstrella.connect("timeout", _on_timer_timeout_estrella)
-	musica_fondo.play()
+	#musica_fondo.play()
+	musica_fondo_under.play()
 
 # FUNCION EJECUTANDOSE A 60 FPS:
 func _physics_process(delta):
