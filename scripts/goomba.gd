@@ -31,6 +31,7 @@ const DISTANCIA_ACTIVACION = 400
 @onready var sprite = $AnimatedSprite2D
 #@onready var animationPlayer = $AnimationPlayer
 @onready var timerGoombaAplastado = $TimerGoombaAplastado
+@onready var sonido_impacto = $SonidoImpacto
 
 # FUNCION INIT:
 func _ready():
@@ -127,6 +128,7 @@ func _on_bloque_sprite_body_entered(body):
 		timerGoombaAplastado.start(0.4)
 		velocity.y = -200
 		FuncionesTilesMario.agregar_puntos(100, global_position)
+		sonido_impacto.play()
 
 # RESET TIPO-GOOMBA Y ESTABLECER EL NUEVO:
 func reset_tipo_goomba_cambio_a(new_tipo):

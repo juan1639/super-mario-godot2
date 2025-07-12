@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bwn5o8bf43uqr"]
+[gd_scene load_steps=25 format=3 uid="uid://bwn5o8bf43uqr"]
 
 [ext_resource type="Script" uid="uid://cv4rym5ix4sxf" path="res://scripts/mario.gd" id="1_bvgp0"]
 [ext_resource type="Texture2D" uid="uid://belgnktgel8wy" path="res://assets/textures/mario-ssheet-1.png" id="1_keuod"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://qfottwqvu1oq" path="res://assets/audio/estrella.mp3" id="8_5l4gq"]
 [ext_resource type="AudioStream" uid="uid://jwityfng1of2" path="res://assets/audio/bonus-level-up.mp3" id="9_t0xp7"]
 [ext_resource type="AudioStream" uid="uid://cacgho7h1erd2" path="res://assets/audio/musica-mario-bros.mp3" id="10_q20sn"]
+[ext_resource type="AudioStream" uid="uid://ddb1c2wkthd2g" path="res://assets/audio/impacto.mp3" id="12_pruu4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjj4f"]
 atlas = ExtResource("1_keuod")
@@ -239,6 +240,9 @@ stream = ExtResource("8_5l4gq")
 
 [node name="SonidoBonusLevelUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_t0xp7")
+
+[node name="SonidoImpacto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pruu4")
 
 [node name="MusicaFondo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_q20sn")

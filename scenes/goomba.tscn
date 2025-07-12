@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://brujiq5va0qko"]
+[gd_scene load_steps=17 format=3 uid="uid://brujiq5va0qko"]
 
 [ext_resource type="Texture2D" uid="uid://7kg3t6uy65cj" path="res://assets/textures/goomba-ssheet-alpha.png" id="1_21hcc"]
 [ext_resource type="Script" uid="uid://r5i2qwr5747" path="res://scripts/goomba.gd" id="1_s1jgw"]
 [ext_resource type="Texture2D" uid="uid://bt4c5o32aq766" path="res://assets/textures/goomba-paracaidas.png" id="3_fgpj4"]
+[ext_resource type="AudioStream" uid="uid://ddb1c2wkthd2g" path="res://assets/audio/impacto.mp3" id="4_l0j8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0j8n"]
 atlas = ExtResource("1_21hcc")
@@ -147,3 +148,6 @@ texture = ExtResource("3_fgpj4")
 libraries = {
 &"": SubResource("AnimationLibrary_5lml2")
 }
+
+[node name="SonidoImpacto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_l0j8n")

@@ -49,6 +49,7 @@ const PUNTOS_POR_SEGUNDO := 50
 @onready var sonido_lose_life = $SonidoLoseLife
 @onready var sonido_aplastar = $SonidoAplastar
 @onready var sonido_bonus_level_up = $SonidoBonusLevelUp
+@onready var sonido_impacto = $SonidoImpacto
 @onready var musica_level_up = $MusicaLevelUp
 @onready var musica_estrella = $MusicaEstrella
 @onready var musica_fondo = $MusicaFondo
@@ -157,6 +158,7 @@ func _on_goomba_body_entered(body, goomba):
 			goomba.timerGoombaAplastado.start(0.4)
 			goomba.velocity.y = -200
 			FuncionesTilesMario.agregar_puntos(200, global_position)
+			sonido_impacto.play()
 			return
 		elif not invulnerability:
 			velocity = Vector2(0, POTENCIA_SALTO * 2)
@@ -238,7 +240,7 @@ func check_timeup(delta):
 		print("Time up")
 		velocity = Vector2(0, POTENCIA_SALTO * 2)
 		panelTimeup.visible = true
-		panelTimeup.global_position = global_position + Vector2(-75, -100)
+		#panelTimeup.global_position = global_position + Vector2(-75, -100)
 		actions_lose_life()
 
 # VELOCITY ZERO:
