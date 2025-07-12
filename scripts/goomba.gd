@@ -126,6 +126,7 @@ func _on_bloque_sprite_body_entered(body):
 		is_dying_not_aplastado = true
 		timerGoombaAplastado.start(0.4)
 		velocity.y = -200
+		FuncionesTilesMario.agregar_puntos(100, global_position)
 
 # RESET TIPO-GOOMBA Y ESTABLECER EL NUEVO:
 func reset_tipo_goomba_cambio_a(new_tipo):

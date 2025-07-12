@@ -156,6 +156,7 @@ func _on_goomba_body_entered(body, goomba):
 			goomba.is_dying_not_aplastado = true
 			goomba.timerGoombaAplastado.start(0.4)
 			goomba.velocity.y = -200
+			FuncionesTilesMario.agregar_puntos(200, global_position)
 			return
 		elif not invulnerability:
 			velocity = Vector2(0, POTENCIA_SALTO * 2)
