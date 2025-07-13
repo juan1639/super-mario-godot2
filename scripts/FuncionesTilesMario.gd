@@ -64,7 +64,8 @@ func impacto_bloques_tween(tilemap, tile_pos, source_id, TIPO_BLOQUE, global_pos
 		moneda_tween(item_pos, sonido_coin, global_position)
 		
 	elif TIPO_BLOQUE == BLOQUE_LADRILLO or TIPO_BLOQUE == BLOQUE_LADRILLO_UNDER:
-		instanciaBloque = instanciar_bloque(2, bloque_pos2)
+		var frameId = 2 if TIPO_BLOQUE == BLOQUE_LADRILLO else 4
+		instanciaBloque = instanciar_bloque(frameId, bloque_pos2)
 		item_ladrillos(item_pos, sonido_coin, global_position)
 	
 	# TWEEN DEL TILE (desplazamiento hacia arriba):
