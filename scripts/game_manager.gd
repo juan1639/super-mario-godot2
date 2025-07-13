@@ -65,7 +65,7 @@ func _ready():
 	
 	# REFERENCIA A OCULTADOR DE LA INTERROGACION-VIDA-EXTRA:
 	GlobalValues.ref_oculta_tile = current_world.get_node("OcultaTile")
-	GlobalValues.ref_oculta_tile.global_position = GlobalValues.lista_setas_extra[0] + Vector2(0, 16)
+	GlobalValues.ref_oculta_tile.global_position = GlobalValues.lista_setas_extra[world][0] + Vector2(0, 16)
 	
 	# INSTANCIA DE UNA MONEDA-SPRITE (Posteriormente solo hace falta cambiar posicion):
 	GlobalValues.monedaSprite = moneda_scene.instantiate()

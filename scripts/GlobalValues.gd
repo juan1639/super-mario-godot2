@@ -58,19 +58,27 @@ var goombas_instancias = []
 
 # ITEMS (SETAS, y SETAS-EXTRA):
 var lista_setas = [
-	Vector2(344, 136), Vector2(1256, 136), Vector2(1752, 72)
+	[], # scene 0
+	[Vector2(344, 136), Vector2(1256, 136), Vector2(1752, 72)],
+	[]
 ]
 
 var lista_setas_extra = [
-	Vector2(1032, 120)
+	[], # scene 0
+	[Vector2(1032, 120)],
+	[Vector2(64, 32)]
 ]
 
 var lista_estrellas = [
-	Vector2(1624, 136)
+	[], # scene 0
+	[Vector2(1624, 136)],
+	[]
 ]
 
 var lista_repetitivas = [
-	Vector2(1512, 136)
+	[], # scene 0
+	[Vector2(1512, 136)],
+	[]
 ]
 
 var lista_desactivados = []

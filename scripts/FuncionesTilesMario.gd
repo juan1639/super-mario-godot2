@@ -110,10 +110,12 @@ func eliminar_instancia():
 func moneda_tween(item_pos, sonido_coin, global_position):
 	print(item_pos, GlobalValues.lista_setas)
 	
-	if item_pos in GlobalValues.lista_setas or item_pos in GlobalValues.lista_setas_extra:
+	var world = GlobalValues.marcadores["world"][1]
+	
+	if item_pos in GlobalValues.lista_setas[world] or item_pos in GlobalValues.lista_setas_extra[world]:
 		if not item_pos in GlobalValues.lista_desactivados:
 			
-			if item_pos in GlobalValues.lista_setas_extra:
+			if item_pos in GlobalValues.lista_setas_extra[world]:
 				GlobalValues.ref_oculta_tile.visible = false
 			
 			GlobalValues.setaSprite.global_position = item_pos
@@ -146,14 +148,16 @@ func fin_moneda_ocultar():
 func item_ladrillos(item_pos, sonido_coin, global_position):
 	print(item_pos)
 	
-	if item_pos in GlobalValues.lista_estrellas:
+	var world = GlobalValues.marcadores["world"][1]
+	
+	if item_pos in GlobalValues.lista_estrellas[world]:
 		if not item_pos in GlobalValues.lista_desactivados:
 			GlobalValues.estrellaSprite.global_position = item_pos
 			GlobalValues.estrellaSprite.activa = true
 			GlobalValues.setaSprite.sonido_seta.play()
 			GlobalValues.lista_desactivados.append(item_pos)
 	
-	elif item_pos in GlobalValues.lista_repetitivas:
+	elif item_pos in GlobalValues.lista_repetitivas[world]:
 		if not item_pos in GlobalValues.lista_desactivados:
 			moneda_tween(item_pos, sonido_coin, global_position)
 
