@@ -73,7 +73,7 @@ func transicion_next_vida(delta, context):
 	if context.timerTransicionVidaMenos.time_left == 0.0:
 		FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 		context.panelShowVidas.visible = false
-		context.musica_fondo.play()
+		context.musica.play()
 
 func en_juego(delta, context):
 	if not GlobalValues.estado_juego["en_juego"]:

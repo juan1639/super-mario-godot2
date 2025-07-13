@@ -2,6 +2,7 @@ extends Node
 
 signal marcador_actualizado
 signal monedas_actualizadas
+signal world_actualizado
 
 # TILE-INTERROGACION = (2,1) | TILE-BLOQUE-LADRILLO = (3,1):
 const INTERROGACION = Vector2i(2, 1)
@@ -174,6 +175,7 @@ func agregar_puntos_sin_texto(cantidad):
 	
 	emit_signal("marcador_actualizado")
 
+# SUMAR MONEDAS:
 func agregar_monedas(cantidad):
 	GlobalValues.marcadores["coins"] += cantidad
 	
@@ -181,3 +183,8 @@ func agregar_monedas(cantidad):
 		GlobalValues.marcadores["coins"] = 0
 	
 	emit_signal("monedas_actualizadas")
+
+# ACTUALIZAR WORLD:
+func actualizar_world(world):
+	GlobalValues.marcadores["world"][1] += world
+	emit_signal("world_actualizado")

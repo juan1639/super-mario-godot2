@@ -25,7 +25,8 @@ func _ready():
 	print("Start new game ")
 	
 	# INSTANCIAR CURRENT-WORLD:
-	var current_world = GlobalValues.scenes[1].instantiate()
+	var world = GlobalValues.marcadores["world"][1]
+	var current_world = GlobalValues.scenes[world].instantiate()
 	world_container.add_child(current_world)
 	
 	var fallZones = current_world.get_node("FallZones")
@@ -35,9 +36,15 @@ func _ready():
 	var goomba_spawns = current_world.get_node("GoombaSpawns")
 	
 	# RESETEAR MARCADORES:
-	FuncionesGenerales.reset_scores()
-	FuncionesTilesMario.agregar_puntos_sin_texto(-99)
-	FuncionesTilesMario.agregar_monedas(-99)
+	if GlobalValues.marcadores["world"][1] == 1:
+		FuncionesGenerales.reset_scores()
+		FuncionesTilesMario.agregar_puntos_sin_texto(-99)
+		FuncionesTilesMario.agregar_monedas(-99)
+		FuncionesTilesMario.actualizar_world(0)
+	else:
+		FuncionesTilesMario.agregar_puntos_sin_texto(0)
+		FuncionesTilesMario.agregar_monedas(0)
+		FuncionesTilesMario.actualizar_world(0)
 	
 	# RESETEAR LISTA-DESACTIVADOS:
 	GlobalValues.lista_desactivados = []

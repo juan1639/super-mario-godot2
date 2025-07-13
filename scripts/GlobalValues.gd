@@ -11,6 +11,7 @@ const BOTTOM_LIMIT = 900 # BOTTOM-LIMIT (si es necesario)
 
 # ESCENAS (NIVELES):
 var scenes = [
+	null, # scene 0
 	preload("res://scenes/world_1_1.tscn"),
 	preload("res://scenes/world_1_2.tscn")
 ]

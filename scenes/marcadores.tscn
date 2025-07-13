@@ -57,7 +57,6 @@ hframes = 6
 [node name="CoinsNum" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "x 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -74,7 +73,6 @@ vertical_alignment = 1
 [node name="WorldNum" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "1-1"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# QUE MUSICA DEBE SONAR:
+var musica = null
+
 # VELOCIDAD HORIZONAL
 const VEL_MAX = 197.0
 const ACELERACION = 175.0
@@ -27,6 +30,8 @@ var invulnerability = false
 const RESPAWN_POSITION = Vector2(96, 176)
 const RESPAWN_MIDDLE_WORLD = Vector2(1650, 176)
 const CHECK_POINT_MIDDLE = Vector2(1550, 176)
+
+const RESPAWN_POSITION_UNDERGROUND = Vector2(64, 0)
 
 # BONUS DE TIEMPO:
 var tiempo_tick_acumulado := 0.0
@@ -81,8 +86,8 @@ func _ready():
 	timerColision.start(0.1)
 	timerTransicionVidaMenos.start(3.1)
 	timerEstrella.connect("timeout", _on_timer_timeout_estrella)
-	#musica_fondo.play()
-	musica_fondo_under.play()
+	seleccionar_musica()
+	musica.play()
 
 # FUNCION EJECUTANDOSE A 60 FPS:
 func _physics_process(delta):
@@ -112,7 +117,7 @@ func _on_flag_pole_body_entered(body):
 		call_deferred("velocity_zero")
 		salto["presionado"] = false
 		FuncionesGenerales.reset_estados_cambio_estado_a("transicion_flag_pole")
-		musica_fondo.stop()
+		musica.stop()
 		musica_level_up.play()
 		var tween = create_tween()
 		var bottom_pos = GlobalValues.flag_sprite.global_position + Vector2(0, 128) # 128 = posY bandera suelo
@@ -144,7 +149,7 @@ func _on_estrella_body_entered(body):
 		print("Invulnerable!")
 		invulnerability = true
 		timerEstrella.start(GlobalValues.DURACION_ESTRELLA)
-		musica_fondo.stop()
+		musica.stop()
 		musica_estrella.play()
 		# LA DESPLAZAMOS MUY ABAJO PARA QUE SE DETECTE BOTTOM-LIMIT Y DESACTIVARLA:
 		GlobalValues.estrellaSprite.global_position += Vector2(0, 9990)
@@ -199,7 +204,7 @@ func _on_timer_timeout_estrella():
 		invulnerability = false
 		modulate = Color(1, 1, 1, 1)
 		musica_estrella.stop()
-		musica_fondo.play()
+		musica.play()
 
 # ACCIONES AL PERDER VIDA:
 func actions_lose_life():
@@ -214,7 +219,7 @@ func actions_lose_life():
 	
 	timerTransicionVidaMenos.start(3.1)
 	
-	musica_fondo.stop()
+	musica.stop()
 	sonido_lose_life.play()
 
 # BONUS TIEMPO-SOBRANTE (FINAL NIVEL):
@@ -249,7 +254,17 @@ func check_timeup(delta):
 func velocity_zero():
 	velocity = Vector2(0, 0)
 
+# SELECCIONAR MUSICA:
+func seleccionar_musica():
+	musica = musica_fondo
+	
+	if GlobalValues.marcadores["world"][1] == 2:
+		musica = musica_fondo_under
+
 # Pulsar ESC (salir):
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		get_tree().quit()
+	
+	if event is InputEventKey and event.pressed and event.keycode == KEY_1:
+		print(global_position)

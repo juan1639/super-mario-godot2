@@ -34,7 +34,8 @@ func salto_jugador(delta, context):
 # CHECK WORLD-BOTTOM-LIMIT:
 func check_world_bottom_limit(context):
 	if context.global_position.y > GlobalValues.BOTTOM_LIMIT:
-		reset_position(context)
+		#reset_position(context)
+		context.actions_lose_life()
 
 # WORLD CLAMPS:
 func aplicar_clamps(context):
@@ -47,10 +48,16 @@ func aplicar_clamps(context):
 # RESETEAR-RESPAWNEAR JUGADOR A SU POSICION INICIAL:
 func reset_position(context):
 	print(context.global_position)
+	
 	if context.global_position.x < context.CHECK_POINT_MIDDLE.x or GlobalValues.estado_juego["prejuego"]:
 		context.global_position = context.RESPAWN_POSITION
+		respawn_position_exceptions(context)
 	else:
 		context.global_position = context.RESPAWN_MIDDLE_WORLD
 	
 	context.velocity = Vector2.ZERO
 	context.sprite.flip_h = false
+
+func respawn_position_exceptions(context):
+	if GlobalValues.marcadores["world"][1] == 2:
+		context.global_position = context.RESPAWN_POSITION_UNDERGROUND
