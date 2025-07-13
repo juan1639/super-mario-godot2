@@ -60,7 +60,7 @@ var goombas_instancias = []
 var lista_setas = [
 	[], # scene 0
 	[Vector2(344, 136), Vector2(1256, 136), Vector2(1752, 72)],
-	[]
+	[Vector2(168, 136), Vector2(1000, 136)]
 ]
 
 var lista_setas_extra = [
@@ -72,13 +72,13 @@ var lista_setas_extra = [
 var lista_estrellas = [
 	[], # scene 0
 	[Vector2(1624, 136)],
-	[]
+	[Vector2(744, 136)]
 ]
 
 var lista_repetitivas = [
 	[], # scene 0
 	[Vector2(1512, 136)],
-	[]
+	[Vector2(472, 120)]
 ]
 
 var lista_desactivados = []

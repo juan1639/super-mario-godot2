@@ -7,6 +7,7 @@ signal world_actualizado
 # TILE-INTERROGACION = (2,1) | TILE-BLOQUE-LADRILLO = (3,1):
 const INTERROGACION = Vector2i(2, 1)
 const BLOQUE_LADRILLO = Vector2i(3, 1)
+const BLOQUE_LADRILLO_UNDER = Vector2i(8, 3)
 const BLOQUE_INVISIBLE = Vector2i(0, 0)
 const BLOQUE_DESACTIVADO = Vector2i(7, 3)
 
@@ -38,8 +39,8 @@ func identificar_tile(global_position, salto, timer, sonido_coin):
 	
 	if atlas_coords == INTERROGACION:
 		impacto_bloques_tween(tilemap, tile_pos, source_id, INTERROGACION, global_position, salto, sonido_coin)
-	elif atlas_coords == BLOQUE_LADRILLO:
-		impacto_bloques_tween(tilemap, tile_pos, source_id, BLOQUE_LADRILLO, global_position, salto, sonido_coin)
+	elif atlas_coords == BLOQUE_LADRILLO or atlas_coords == BLOQUE_LADRILLO_UNDER:
+		impacto_bloques_tween(tilemap, tile_pos, source_id, atlas_coords, global_position, salto, sonido_coin)
 
 # TWEEN TILES:
 func impacto_bloques_tween(tilemap, tile_pos, source_id, TIPO_BLOQUE, global_position, salto, sonido_coin):
@@ -58,11 +59,11 @@ func impacto_bloques_tween(tilemap, tile_pos, source_id, TIPO_BLOQUE, global_pos
 	var instanciaBloque: CharacterBody2D
 	
 	# QUE TIPO DE BLOQUE? (INTERROGACION O LADRILLO):
-	if TIPO_BLOQUE == Vector2i(2, 1):
+	if TIPO_BLOQUE == INTERROGACION:
 		instanciaBloque = instanciar_bloque(3, bloque_pos2)
 		moneda_tween(item_pos, sonido_coin, global_position)
 		
-	elif TIPO_BLOQUE == Vector2i(3, 1):
+	elif TIPO_BLOQUE == BLOQUE_LADRILLO or TIPO_BLOQUE == BLOQUE_LADRILLO_UNDER:
 		instanciaBloque = instanciar_bloque(2, bloque_pos2)
 		item_ladrillos(item_pos, sonido_coin, global_position)
 	
@@ -160,6 +161,12 @@ func item_ladrillos(item_pos, sonido_coin, global_position):
 	elif item_pos in GlobalValues.lista_repetitivas[world]:
 		if not item_pos in GlobalValues.lista_desactivados:
 			moneda_tween(item_pos, sonido_coin, global_position)
+	
+	elif item_pos in GlobalValues.lista_setas[world]:
+		GlobalValues.setaSprite.global_position = item_pos
+		GlobalValues.setaSprite.activa = true
+		GlobalValues.setaSprite.sonido_seta.play()
+		GlobalValues.lista_desactivados.append(item_pos)
 
 # SCORES:
 func agregar_puntos(cantidad, global_position):
