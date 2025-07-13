@@ -35,6 +35,12 @@ func _ready():
 	var zoneInstanciaParacaidas = current_world.get_node("ParacaidasZones")
 	var goomba_spawns = current_world.get_node("GoombaSpawns")
 	
+	var plataformas = current_world.get_node_or_null("Plataformas")
+	
+	if plataformas:
+		for plataf in plataformas.get_children():
+			print("Plataforma:" + plataf.name)
+	
 	# RESETEAR MARCADORES:
 	if GlobalValues.marcadores["world"][1] == 1:
 		FuncionesGenerales.reset_scores()

@@ -111,7 +111,7 @@ _data = {
 [node name="Goomba" type="CharacterBody2D"]
 z_index = 15
 collision_layer = 2
-collision_mask = 9
+collision_mask = 4105
 script = ExtResource("1_s1jgw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
