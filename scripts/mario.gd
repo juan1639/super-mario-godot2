@@ -31,8 +31,10 @@ const RESPAWN_POSITION = Vector2(96, 176)
 const RESPAWN_MIDDLE_WORLD = Vector2(1650, 176)
 const CHECK_POINT_MIDDLE = Vector2(1550, 176)
 
-#const RESPAWN_POSITION_UNDERGROUND = Vector2(64, 0)
+const RESPAWN_POSITION_UNDERGROUND_2 = Vector2(64, 0)
 const RESPAWN_POSITION_UNDERGROUND = Vector2(112, -48)
+
+var bandera_underground = false
 
 # BONUS DE TIEMPO:
 var tiempo_tick_acumulado := 0.0
@@ -84,8 +86,9 @@ var lista_estados_transiciones = [
 # FUNCION INICIALIZADORA:
 func _ready():
 	#print("Instancia Mario")
+	bandera_underground = false
 	seleccionar_inicio_mario()
-	FuncionesMovSaltoMario.reset_position(self)
+	FuncionesMovSaltoMario.reset_position(self, bandera_underground)
 	sonido_salto.volume_db = -20.0
 	GlobalValues.marcadores["time"] = GlobalValues.TIEMPO_INICIAL
 	timer.start(0.2)
@@ -136,7 +139,7 @@ func _on_timer_entrar_tuberia_timeout():
 	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 	camera_2.enabled = false
 	camera.enabled = true
-	global_position = Vector2(64, 0)
+	global_position = RESPAWN_POSITION_UNDERGROUND_2
 	musica.stop()
 	musica = musica_fondo_under
 	musica.play()

@@ -53,7 +53,8 @@ func transicion_vida_menos(delta, context):
 		context.timerTransicionVidaMenos.start(2.1)
 		context.panelTimeup.visible = false
 		FuncionesGenerales.reset_estados_cambio_estado_a("transicion_next_vida")
-		FuncionesMovSaltoMario.reset_position(context)
+		context.bandera_underground = true
+		FuncionesMovSaltoMario.reset_position(context, true)
 		context.panelShowVidas.visible = true if not GlobalValues.estado_juego["game_over"] else false
 		return
 

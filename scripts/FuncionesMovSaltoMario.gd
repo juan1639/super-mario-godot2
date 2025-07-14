@@ -46,18 +46,21 @@ func aplicar_clamps(context):
 	context.global_position.x = clamp(context.global_position.x, GlobalValues.LIMITE_IZ, GlobalValues.LIMITE_DE)
 
 # RESETEAR-RESPAWNEAR JUGADOR A SU POSICION INICIAL:
-func reset_position(context):
+func reset_position(context, bandera_underground):
 	print(context.global_position)
 	
 	if context.global_position.x < context.CHECK_POINT_MIDDLE.x or GlobalValues.estado_juego["prejuego"]:
 		context.global_position = context.RESPAWN_POSITION
-		respawn_position_exceptions(context)
+		respawn_position_exceptions(context, bandera_underground)
 	else:
 		context.global_position = context.RESPAWN_MIDDLE_WORLD
 	
 	context.velocity = Vector2.ZERO
 	context.sprite.flip_h = false
 
-func respawn_position_exceptions(context):
+func respawn_position_exceptions(context, bandera_underground):
 	if GlobalValues.marcadores["world"][1] == 2:
-		context.global_position = context.RESPAWN_POSITION_UNDERGROUND
+		if bandera_underground:
+			context.global_position = context.RESPAWN_POSITION_UNDERGROUND_2
+		else:
+			context.global_position = context.RESPAWN_POSITION_UNDERGROUND
