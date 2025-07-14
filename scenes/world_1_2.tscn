@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://brqwmsobbkeca"]
+[gd_scene load_steps=28 format=4 uid="uid://brqwmsobbkeca"]
 
 [ext_resource type="Texture2D" uid="uid://2tjfhg5me1s" path="res://assets/textures/smb-fondo-1-2.jpg" id="1_wjeva"]
 [ext_resource type="Texture2D" uid="uid://b3rfka47j8ps5" path="res://assets/textures/smb-tuberia-horizontal.png" id="2_4m84a"]
@@ -191,6 +191,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4r3o0"]
 size = Vector2(27, 29)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvy1v"]
+size = Vector2(30, 23)
+
 [node name="World1-2" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -209,6 +212,16 @@ offset_left = 197.0
 offset_top = -58.0
 offset_right = 246.0
 offset_bottom = -18.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_4m84a")
+
+[node name="TuberiaHorizontalFinal" type="TextureRect" parent="."]
+z_index = 22
+z_as_relative = false
+offset_left = 2629.0
+offset_top = 134.0
+offset_right = 2678.0
+offset_bottom = 174.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_4m84a")
 
@@ -345,8 +358,7 @@ position = Vector2(2157, 125)
 curve = SubResource("Curve2D_wjeva")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Plataformas/Plataforma0"]
-position = Vector2(2231.49, 130.299)
-progress = 129.3
+position = Vector2(2232, 1)
 rotates = false
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Plataformas/Plataforma0/PathFollow2D"]
@@ -370,8 +382,7 @@ autoplay = "Recorrido"
 curve = SubResource("Curve2D_4m84a")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Plataformas/Plataforma1"]
-position = Vector2(2469, 101.923)
-progress = 144.076
+position = Vector2(2469, 246)
 rotates = false
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Plataformas/Plataforma1/PathFollow2D"]
@@ -391,11 +402,22 @@ libraries = {
 }
 autoplay = "Recorrido"
 
-[node name="Area2DEntrarTuberia" type="Area2D" parent="."]
+[node name="EntrarTuberias" type="Node" parent="."]
+
+[node name="Area2DEntrarTuberia0" type="Area2D" parent="EntrarTuberias"]
 position = Vector2(206, -45)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DEntrarTuberia"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntrarTuberias/Area2DEntrarTuberia0"]
 position = Vector2(1.5, -1.5)
 shape = SubResource("RectangleShape2D_4r3o0")
+
+[node name="Area2DEntrarTuberia1" type="Area2D" parent="EntrarTuberias"]
+position = Vector2(2638, 150)
+collision_layer = 8192
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntrarTuberias/Area2DEntrarTuberia1"]
+position = Vector2(5, -1.5)
+shape = SubResource("RectangleShape2D_wvy1v")
