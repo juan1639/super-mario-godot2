@@ -1,5 +1,6 @@
 extends PanelContainer
 
+# REJUGAR OTRA PARTIDA (VOLVER MENU PRINCIPAL):
 func _on_button_pressed():
 	GlobalValues.marcadores["world"][0] = 1
 	GlobalValues.marcadores["world"][1] = 1

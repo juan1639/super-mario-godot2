@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwn5o8bf43uqr"]
+[gd_scene load_steps=27 format=3 uid="uid://bwn5o8bf43uqr"]
 
 [ext_resource type="Script" uid="uid://cv4rym5ix4sxf" path="res://scripts/mario.gd" id="1_bvgp0"]
 [ext_resource type="Texture2D" uid="uid://belgnktgel8wy" path="res://assets/textures/mario-ssheet-1.png" id="1_keuod"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cacgho7h1erd2" path="res://assets/audio/musica-mario-bros.mp3" id="10_q20sn"]
 [ext_resource type="AudioStream" uid="uid://ddb1c2wkthd2g" path="res://assets/audio/impacto.mp3" id="12_pruu4"]
 [ext_resource type="AudioStream" uid="uid://ddw8hk2tgefas" path="res://assets/audio/mario-tuberias.mp3" id="14_440ab"]
+[ext_resource type="AudioStream" uid="uid://bpdan62oaoexr" path="res://assets/audio/gameover_mario.mp3" id="15_l0oii"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjj4f"]
 atlas = ExtResource("1_keuod")
@@ -229,6 +230,7 @@ stream = ExtResource("4_wnd63")
 
 [node name="SonidoLoseLife" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_rgcl4")
+max_distance = 9900.0
 
 [node name="SonidoAplastar" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_cjj4f")
@@ -250,3 +252,8 @@ stream = ExtResource("10_q20sn")
 
 [node name="MusicaFondoUnderground" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_440ab")
+
+[node name="MusicaGameover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_l0oii")
+max_distance = 49000.0
+attenuation = 0.0625002

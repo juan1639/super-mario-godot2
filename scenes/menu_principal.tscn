@@ -74,6 +74,7 @@ text = "Salir"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 stream = ExtResource("3_iep14")
 autoplay = true
+max_distance = 9000.0
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/ButtonJugar" to="CanvasLayer/PanelContainer" method="_on_button_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/ButtonSalir" to="CanvasLayer/PanelContainer" method="_on_button_salir_pressed"]

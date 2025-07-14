@@ -59,6 +59,7 @@ const PUNTOS_POR_SEGUNDO := 50
 @onready var musica_estrella = $MusicaEstrella
 @onready var musica_fondo = $MusicaFondo
 @onready var musica_fondo_under = $MusicaFondoUnderground
+@onready var musica_gameover = $MusicaGameover
 
 # REFERENCIAS OTRAS ESCENAS:
 var fireworks: Node2D = null
@@ -220,7 +221,11 @@ func actions_lose_life():
 	timerTransicionVidaMenos.start(3.1)
 	
 	musica.stop()
-	sonido_lose_life.play()
+	
+	if GlobalValues.marcadores["lives"] <= 0:
+		musica_gameover.play()
+	else:
+		sonido_lose_life.play()
 
 # BONUS TIEMPO-SOBRANTE (FINAL NIVEL):
 func procesar_bonus_tiempo(delta):
