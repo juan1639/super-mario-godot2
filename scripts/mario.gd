@@ -31,7 +31,8 @@ const RESPAWN_POSITION = Vector2(96, 176)
 const RESPAWN_MIDDLE_WORLD = Vector2(1650, 176)
 const CHECK_POINT_MIDDLE = Vector2(1550, 176)
 
-const RESPAWN_POSITION_UNDERGROUND = Vector2(64, 0)
+#const RESPAWN_POSITION_UNDERGROUND = Vector2(64, 0)
+const RESPAWN_POSITION_UNDERGROUND = Vector2(112, -48)
 
 # BONUS DE TIEMPO:
 var tiempo_tick_acumulado := 0.0
@@ -40,6 +41,8 @@ const PUNTOS_POR_SEGUNDO := 50
 
 # REFERENCIAS:
 @onready var sprite = $AnimatedSprite2D
+@onready var camera = $Camera2D
+@onready var camera_2 = $Camera2D2
 @onready var cpuParticles = $CPUParticles2D
 @onready var cpuParticlesFireworks = preload("res://scenes/fireworks.tscn")
 #@onready var goomba_scene = preload("res://scenes/goomba.tscn")
@@ -48,6 +51,7 @@ const PUNTOS_POR_SEGUNDO := 50
 @onready var timer = $Timer
 @onready var timerColision = $TimerColision
 @onready var timerTransicionVidaMenos = $TimerTransicionVidaMenos
+@onready var timerEntrarTuberia = $TimerEntrarTuberia
 @onready var timerEstrella = $TimerEstrella
 @onready var sonido_salto = $SonidoSalto
 @onready var sonido_coin = $SonidoCoin
@@ -55,6 +59,7 @@ const PUNTOS_POR_SEGUNDO := 50
 @onready var sonido_aplastar = $SonidoAplastar
 @onready var sonido_bonus_level_up = $SonidoBonusLevelUp
 @onready var sonido_impacto = $SonidoImpacto
+@onready var sonido_entrar_tuberia = $SonidoEntrarTuberia
 @onready var musica_level_up = $MusicaLevelUp
 @onready var musica_estrella = $MusicaEstrella
 @onready var musica_fondo = $MusicaFondo
@@ -79,8 +84,8 @@ var lista_estados_transiciones = [
 # FUNCION INICIALIZADORA:
 func _ready():
 	#print("Instancia Mario")
+	seleccionar_inicio_mario()
 	FuncionesMovSaltoMario.reset_position(self)
-	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
 	sonido_salto.volume_db = -20.0
 	GlobalValues.marcadores["time"] = GlobalValues.TIEMPO_INICIAL
 	timer.start(0.2)
@@ -92,6 +97,7 @@ func _ready():
 
 # FUNCION EJECUTANDOSE A 60 FPS:
 func _physics_process(delta):
+	FuncionesAuxiliaresMario.inicio_fase_underground(delta, self)
 	FuncionesAuxiliaresMario.transicion_flag_pole(delta, self)
 	FuncionesAuxiliaresMario.transicion_goal_zone(delta, self)
 	FuncionesAuxiliaresMario.transicion_vida_menos(delta, self)
@@ -101,6 +107,16 @@ func _physics_process(delta):
 	FuncionesAuxiliaresMario.en_juego(delta, self)
 	FuncionesAuxiliaresMario.otros_estados(delta, self)
 
+# SELECCIONAR INICIOS DIFERENTES (FASES UNDERGROUND, ETC.):
+func seleccionar_inicio_mario():
+	camera.enabled = false if GlobalValues.marcadores["world"][1] == 2 else true
+	camera_2.enabled = true if GlobalValues.marcadores["world"][1] != 2 else true
+	
+	if GlobalValues.marcadores["world"][1] == 2:
+		FuncionesGenerales.reset_estados_cambio_estado_a("inicio_fase_underground")
+	else:
+		FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
+
 # ----------------------------------------------------------------
 #	S E Ñ A L E S
 # ----------------------------------------------------------------
@@ -108,6 +124,22 @@ func _physics_process(delta):
 func _on_fall_zone_body_entered(body):
 	if body == self and GlobalValues.estado_juego["en_juego"]:
 		actions_lose_life()
+
+func _on_entrar_tuberia_body_entered(body):
+	if body == self:
+		print("entrar-tuberia")
+		sonido_entrar_tuberia.play()
+		timerEntrarTuberia.start(1.5)
+
+# TRANSICIONAR DE ENTRAR-TUBERIA A ESTADO EN_JUEGO:
+func _on_timer_entrar_tuberia_timeout():
+	FuncionesGenerales.reset_estados_cambio_estado_a("en_juego")
+	camera_2.enabled = false
+	camera.enabled = true
+	global_position = Vector2(64, 0)
+	musica.stop()
+	musica = musica_fondo_under
+	musica.play()
 
 # BAJADA DE BANDERA:
 func _on_flag_pole_body_entered(body):
@@ -262,9 +294,6 @@ func velocity_zero():
 # SELECCIONAR MUSICA:
 func seleccionar_musica():
 	musica = musica_fondo
-	
-	if GlobalValues.marcadores["world"][1] == 2:
-		musica = musica_fondo_under
 
 # Pulsar ESC (salir):
 func _input(event):

@@ -41,6 +41,12 @@ func _ready():
 		for plataf in plataformas.get_children():
 			print("Plataforma:" + plataf.name)
 	
+	var entrarTuberia = current_world.get_node_or_null("Area2DEntrarTuberia")
+	
+	if entrarTuberia:
+		print("Area2D entrar tuberia:" + entrarTuberia.name)
+		entrarTuberia.connect("body_entered", Callable(mario, "_on_entrar_tuberia_body_entered"))
+	
 	# RESETEAR MARCADORES:
 	if GlobalValues.marcadores["world"][1] == 1:
 		FuncionesGenerales.reset_scores()

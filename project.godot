@@ -52,6 +52,7 @@ theme/custom_font="uid://0aates0v5a4s"
 2d_physics/layer_11="GoombaArea2D"
 2d_physics/layer_12="BloqueSpriteArea2D"
 2d_physics/layer_13="Plataforma"
+2d_physics/layer_14="EntrarTuberia"
 
 [rendering]
 

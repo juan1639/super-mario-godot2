@@ -43,6 +43,7 @@ var marcadores = {
 # ESTADOS DEL JUEGO
 var estado_juego = {
 	"prejuego": true,
+	"inicio_fase_underground": false,
 	"en_juego": false,
 	"transicion_flag_pole": false,
 	"transicion_goal_zone": false,

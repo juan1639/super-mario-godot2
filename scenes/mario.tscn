@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bwn5o8bf43uqr"]
+[gd_scene load_steps=28 format=3 uid="uid://bwn5o8bf43uqr"]
 
 [ext_resource type="Script" uid="uid://cv4rym5ix4sxf" path="res://scripts/mario.gd" id="1_bvgp0"]
 [ext_resource type="Texture2D" uid="uid://belgnktgel8wy" path="res://assets/textures/mario-ssheet-1.png" id="1_keuod"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://ddb1c2wkthd2g" path="res://assets/audio/impacto.mp3" id="12_pruu4"]
 [ext_resource type="AudioStream" uid="uid://ddw8hk2tgefas" path="res://assets/audio/mario-tuberias.mp3" id="14_440ab"]
 [ext_resource type="AudioStream" uid="uid://bpdan62oaoexr" path="res://assets/audio/gameover_mario.mp3" id="15_l0oii"]
+[ext_resource type="AudioStream" uid="uid://xkpa08rqtsi" path="res://assets/audio/entrar-tuberia.mp3" id="16_lt8tb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjj4f"]
 atlas = ExtResource("1_keuod")
@@ -126,6 +127,13 @@ limit_top = 0
 limit_right = 3380
 limit_bottom = 0
 
+[node name="Camera2D2" type="Camera2D" parent="."]
+offset = Vector2(0, -240)
+limit_left = 0
+limit_top = 0
+limit_right = 427
+limit_bottom = 0
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 scale = Vector2(0.7, 0.7)
 emitting = false
@@ -152,6 +160,9 @@ one_shot = true
 one_shot = true
 
 [node name="TimerTransicionVidaMenos" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerEntrarTuberia" type="Timer" parent="."]
 one_shot = true
 
 [node name="TimerEstrella" type="Timer" parent="."]
@@ -257,3 +268,8 @@ stream = ExtResource("14_440ab")
 stream = ExtResource("15_l0oii")
 max_distance = 49000.0
 attenuation = 0.0625002
+
+[node name="SonidoEntrarTuberia" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_lt8tb")
+
+[connection signal="timeout" from="TimerEntrarTuberia" to="." method="_on_timer_entrar_tuberia_timeout"]

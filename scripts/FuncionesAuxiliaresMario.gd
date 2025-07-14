@@ -3,6 +3,15 @@ extends Node
 # =================================================================
 # 	T R A N S I C I O N E S
 # -----------------------------------------------------------------
+func inicio_fase_underground(delta, context):
+	if not GlobalValues.estado_juego["inicio_fase_underground"]:
+		return
+	
+	context.velocity.x = 10
+	FuncionesGenerales.aplicar_gravedad(delta, context)
+	context.move_and_slide()
+	AnimacionesMario.update_animation(context)
+
 func transicion_flag_pole(delta, context):
 	if not GlobalValues.estado_juego["transicion_flag_pole"]:
 		return
